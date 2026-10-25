@@ -1,6 +1,6 @@
 const crParticleCards = {
-  proton: {symbol: 'p', name: 'Protone', family: 'Particelle composte', tile: 'composite', text: 'Molti raggi cosmici primari sono protoni. Il protone non è una particella elementare: è composto da tre quark (due up e uno down), legati dai gluoni. Può urtare un nucleo dell’aria e avviare una cascata.'},
-  pion: {symbol: 'π', name: 'Pioni', family: 'Particelle composte', tile: 'composite', text: 'Nelle collisioni atmosferiche possono nascere pioni. Non sono particelle elementari: sono composti da un quark e un antiquark. I pioni neutri decadono soprattutto in due fotoni; quelli carichi possono decadere in muoni e neutrini.'},
+  proton: {symbol: 'p', name: 'Protone', family: 'Particelle composte', tile: 'composite', text: 'Il protone è una particella presente nel nucleo degli atomi. Molti raggi cosmici che arrivano dallo spazio sono proprio protoni. Quando uno di essi colpisce il nucleo di un atomo dell’atmosfera, può dare origine a una cascata di nuove particelle.'},
+  pion: {symbol: 'π', name: 'Pioni', family: 'Particelle composte', tile: 'composite', text: 'I pioni sono particelle che possono formarsi quando un raggio cosmico colpisce un nucleo atomico. Hanno una vita molto breve e si trasformano rapidamente in altre particelle. I pioni neutri producono soprattutto fotoni, mentre quelli carichi possono produrre muoni e neutrini.'},
   muon: {model: 'Muone', tile: 'lepton'},
   photon: {model: 'Fotone', tile: 'boson'},
   electron: {model: 'Elettrone', tile: 'lepton'},
@@ -10,31 +10,31 @@ const crParticleCards = {
 const crSteps = [
   {
     title: 'Arrivo dallo spazio',
-    short: 'Un raggio cosmico primario entra nell’atmosfera.',
+    short: 'Una particella proveniente dallo spazio entra nell’atmosfera terrestre.',
     heading: '1 · Un protone arriva dallo spazio',
-    text: 'Qui rappresentiamo un caso tipico: un <strong>protone</strong> entra dall’alto e si dirige verso l’atmosfera terrestre. I raggi cosmici primari possono avere energie altissime e provengono da fenomeni astrofisici lontani.'
+    text: 'Dallo spazio arrivano continuamente particelle chiamate <strong>raggi cosmici</strong>. Molte sono protoni, particelle presenti anche nei nuclei degli atomi. Viaggiano a velocità elevatissime e alcune provengono da regioni molto lontane dell’Universo.'
   },
   {
     title: 'Prima collisione',
-    short: 'L’urto con un nucleo di azoto genera nuove particelle.',
+    short: 'Il protone si scontra con un nucleo atomico presente nell’aria.',
     heading: '2 · La collisione con l’atmosfera',
-    text: 'Quando il protone urta un <strong>nucleo di azoto</strong>, l’energia della collisione produce nuove particelle. Tra le più importanti, in questa versione semplificata, ci sono i <strong>pioni</strong>, che sono il punto di partenza della cascata.'
+    text: 'L’atmosfera è formata da atomi, soprattutto di azoto e ossigeno. Quando il protone colpisce il nucleo di uno di questi atomi, avviene una collisione molto energetica. Una parte dell’energia si trasforma in nuove particelle, tra cui i <strong>pioni</strong>.'
   },
   {
     title: 'Cascata atmosferica',
-    short: 'La doccia di particelle si ramifica mentre scende.',
+    short: 'Le particelle prodotte danno origine a una cascata di altre particelle.',
     heading: '3 · La cascata si ramifica',
-    text: 'La collisione iniziale dà avvio a una <strong>cascata atmosferica</strong>. I <strong>pioni neutri</strong> danno fotoni; i <strong>pioni carichi</strong> possono portare a muoni e neutrini. Compaiono anche elettroni e positroni nella parte elettromagnetica della cascata. <strong>Solo negli eventi più energetici</strong> possono verificarsi anche processi molto rari che producono un tau.'
+    text: 'Le particelle prodotte nella collisione possono urtare altri atomi oppure <strong>decadere</strong>, cioè trasformarsi in particelle diverse. Per esempio, dai pioni possono nascere <strong>fotoni, muoni e neutrini</strong>. Questi processi si ripetono e formano una vera e propria cascata di particelle che si allarga mentre attraversa l’atmosfera.'
   },
   {
     title: 'Muoni al suolo',
-    short: 'Alcune particelle arrivano fino all’aula.',
+    short: 'Alcune particelle attraversano l’atmosfera e raggiungono il suolo.',
     heading: '4 · Muoni che raggiungono il suolo',
-    text: 'Tra tutte le particelle secondarie, i <strong>muoni</strong> sono tra quelle che più facilmente arrivano fino al suolo. Sono proprio questi segnali che possiamo collegare alle tracce nella <strong>camera a nebbia</strong> o a eventi nel <strong>rilevatore di particelle</strong> dell’aula.'
+    text: 'Molte particelle della cascata vengono assorbite o si trasformano prima di raggiungere il terreno. I <strong>muoni</strong>, invece, riescono spesso ad attraversare tutta l’atmosfera. Attraversano continuamente anche noi, senza che ce ne accorgiamo! Possiamo però osservare le tracce di alcuni di essi con strumenti come la <strong>camera a nebbia</strong>.'
   }
 ];
 function crParticleTiles(ids) {
-  return `<div class="cr-particles"><div class="cr-side-label">PARTICELLE COINVOLTE</div><h4>Apri una scheda rapida</h4><div class="cr-particle-grid">${ids.map(id => {const p = smCardData(crParticleCards[id]); return `<button type="button" class="cr-particle-tile" data-cr-particle="${id}" aria-label="Apri la scheda ${p.name}"><span class="cr-particle-symbol cr-${p.tile}">${p.symbol}</span><span class="cr-particle-info"><strong>${p.name}</strong><small>${p.family}</small></span><span class="cr-particle-arrow">↗</span></button>`}).join('')}</div></div><div class="cr-particle-modal" id="crParticleModal" hidden role="dialog" aria-modal="true" aria-label="Scheda particella"><div class="cr-particle-dialog"><button class="cr-particle-close" type="button" aria-label="Chiudi scheda">×</button><span class="cr-particle-large-symbol" id="crParticleSymbol"></span><h3 id="crParticleName"></h3><div id="crParticleText"></div><span class="cr-particle-family" id="crParticleFamily"></span></div></div>`;
+  return `<div class="cr-particles"><div class="cr-side-label">PARTICELLE COINVOLTE</div><h4>Seleziona una particella per conoscerla</h4><div class="cr-particle-grid">${ids.map(id => {const p = smCardData(crParticleCards[id]); return `<button type="button" class="cr-particle-tile" data-cr-particle="${id}" aria-label="Apri la scheda ${p.name}"><span class="cr-particle-symbol cr-${p.tile}">${p.symbol}</span><span class="cr-particle-info"><strong>${p.name}</strong><small>${p.family}</small></span><span class="cr-particle-arrow">↗</span></button>`}).join('')}</div></div><div class="cr-particle-modal" id="crParticleModal" hidden role="dialog" aria-modal="true" aria-label="Scheda particella"><div class="cr-particle-dialog"><button class="cr-particle-close" type="button" aria-label="Chiudi scheda">×</button><span class="cr-particle-large-symbol" id="crParticleSymbol"></span><h3 id="crParticleName"></h3><div id="crParticleText"></div><span class="cr-particle-family" id="crParticleFamily"></span></div></div>`;
 }
 function crBindParticleTiles(root) {
   const modal = root.querySelector('#crParticleModal'); if (!modal) return;
@@ -57,20 +57,20 @@ function renderCosmici() {
   dialogContent.innerHTML = `<div class="cr-experience" id="crExperience">
     <div class="cr-main">
       <div class="cr-topbar">
-        <div><span class="cr-eyebrow">INSPECTROOM · RAGGI COSMICI</span><h3>Dallo spazio all’aula</h3><p>Una singola cascata atmosferica illustrata con il linguaggio visivo di Inspectroom.</p></div>
-        <span class="cr-live">EVENTO ILLUSTRATO</span>
+        <div><span class="cr-eyebrow">INSPECTROOM · RAGGI COSMICI</span><h3>Dallo spazio all’aula</h3><p>Un viaggio alla scoperta delle particelle che arrivano dallo spazio e attraversano l’atmosfera terrestre.</p></div>
+        <span class="cr-live">DALLO SPAZIO ALLA TERRA</span>
       </div>
       <div class="cr-stage-wrap">
         <div class="cr-stage"><canvas id="crCanvas" aria-label="Animazione di una cascata di raggi cosmici nell’atmosfera"></canvas></div>
-        <div class="cr-legend"><span><i style="color:#ffffff"></i> traiettorie principali</span><span><i style="color:#ffcf87"></i> fotoni</span><span><i style="color:#95d9ff"></i> elettroni / positroni</span><span><i style="color:#78ffbe"></i> muoni</span><span><i style="color:#d9b4ff"></i> neutrini</span><span><i style="color:#ffa5d8"></i> tau · raro</span></div>
+        <div class="cr-legend"><span><i style="color:#ffffff"></i> Percorsi delle particelle</span><span><i style="color:#ffcf87"></i> fotoni</span><span><i style="color:#95d9ff"></i> Elettroni e positroni</span><span><i style="color:#78ffbe"></i> muoni</span><span><i style="color:#d9b4ff"></i> neutrini</span><span><i style="color:#ffa5d8"></i> Tau · evento raro</span></div>
       </div>
-      <p class="cr-caption">Rappresentazione illustrativa: osserviamo un <strong>singolo evento</strong> semplificato. Nella realtà le cascate non sono tutte uguali e le particelle secondarie possono essere molto numerose.</p>
+      <p class="cr-caption">Ogni secondo, particelle provenienti dallo spazio colpiscono l’atmosfera terrestre. Seguiamo il viaggio di una di queste particelle e scopriamo che cosa succede.</p>
     </div>
     <aside class="cr-side">
-      <div class="cr-side-label">ESPLORA · APRI UNA TAPPA</div>
+      <div class="cr-side-label">ESPLORA LA CASCATA</div>
       <div class="cr-menu" id="crMenu">${crSteps.map((step, i) => `<button class="cr-step" type="button" data-cr-step="${i}" aria-expanded="false"><span class="cr-step-num">${i + 1}</span><span class="cr-step-body"><strong>${step.title}</strong><small>${step.short}</small><span class="cr-expand" aria-hidden="true">+</span></span></button><div class="cr-step-detail" data-cr-detail="${i}" hidden><p>${step.text}</p></div>`).join('')}</div>
-      <div class="cr-mini-note"><strong>Ramo raro:</strong> nelle collisioni primarie estremamente energetiche può formarsi un mesone Dₛ che decade in un <strong>tau</strong> e un neutrino. Il tau decade quasi immediatamente: nel disegno è un esempio eccezionale, non il percorso consueto della cascata.</div>
-      <div class="cr-mini-note"><strong>Collegamento con l’aula:</strong> i <strong>muoni</strong> prodotti nella cascata sono i candidati più naturali per spiegare molte tracce che si vedono nella camera a nebbia e alcuni eventi osservabili nel rivelatore.</div>
+      <div class="cr-mini-note"><strong>Una particella rara:</strong> nelle collisioni più energetiche possono comparire anche particelle molto difficili da osservare, come il <strong>tau</strong>. È simile all’elettrone e al muone, ma molto più pesante e si trasforma quasi immediatamente in altre particelle.</div>
+      <div class="cr-mini-note"><strong>Dalla cascata all’aula:</strong> alcuni muoni raggiungono la superficie terrestre e attraversano anche gli edifici. Nella nostra aula possiamo scoprire come strumenti come la camera a nebbia e i rivelatori di particelle riescono a mostrarci i segni del loro passaggio.</div>
       ${crParticleTiles(['proton', 'pion', 'muon', 'photon', 'electron', 'neutrino', 'tau'])}
     </aside>
   </div>`;
