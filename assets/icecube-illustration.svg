@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="Illustrazione dell'osservatorio IceCube in Antartide">
+<defs>
+  <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0" stop-color="#09192b"/>
+    <stop offset="0.55" stop-color="#12304a"/>
+    <stop offset="1" stop-color="#3d6281"/>
+  </linearGradient>
+  <linearGradient id="ice" x1="0" x2="0" y1="0" y2="1">
+    <stop offset="0" stop-color="#e8f8ff"/>
+    <stop offset="0.18" stop-color="#b4dff4"/>
+    <stop offset="0.52" stop-color="#5b9ac0"/>
+    <stop offset="1" stop-color="#13385a"/>
+  </linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<rect width="1200" height="700" fill="url(#sky)"/>
+<g fill="#d7efff" opacity=".92">
+  <circle cx="90" cy="70" r="2"/><circle cx="140" cy="120" r="1.7"/><circle cx="250" cy="60" r="1.9"/><circle cx="340" cy="92" r="1.5"/><circle cx="470" cy="72" r="2"/><circle cx="590" cy="56" r="1.5"/><circle cx="730" cy="86" r="1.8"/><circle cx="810" cy="62" r="1.4"/><circle cx="930" cy="82" r="1.8"/><circle cx="1050" cy="66" r="1.5"/>
+</g>
+<path d="M0 190 C140 80 310 90 460 150 S760 220 1200 120 L1200 0 L0 0 Z" fill="#62d9b8" opacity=".16" filter="url(#glow)"/>
+<path d="M0 520 Q220 470 420 500 T1200 470 L1200 700 L0 700 Z" fill="url(#ice)"/>
+<path d="M0 435 C240 400 420 420 675 405 C865 393 1020 410 1200 384 L1200 470 C960 498 700 500 490 503 C300 506 155 486 0 520 Z" fill="#f7fbff" opacity=".85"/>
+<g opacity=".92">
+  <rect x="516" y="323" width="116" height="78" rx="8" fill="#d44c3f" stroke="#f2d4cf"/>
+  <rect x="650" y="334" width="84" height="62" rx="6" fill="#c34038" stroke="#f2d4cf"/>
+  <rect x="498" y="305" width="18" height="96" fill="#ecf6ff"/>
+  <rect x="604" y="300" width="14" height="101" fill="#ecf6ff"/>
+  <path d="M485 404 L754 404" stroke="#9ed2ea" stroke-width="3" opacity=".55"/>
+</g>
+<g stroke="#96cbe7" stroke-width="3" opacity=".85">
+<path d="M180 412 V 660"/><path d="M250 412 V 660"/><path d="M320 412 V 660"/><path d="M390 412 V 660"/><path d="M460 412 V 660"/><path d="M530 412 V 660"/><path d="M600 412 V 660"/><path d="M670 412 V 660"/><path d="M740 412 V 660"/><path d="M810 412 V 660"/><path d="M880 412 V 660"/><path d="M950 412 V 660"/></g><g fill="#bde6ff" stroke="#ffffff" stroke-width="1.3"><circle cx="180" cy="450" r="8"/><circle cx="180" cy="500" r="8"/><circle cx="180" cy="550" r="8"/><circle cx="180" cy="600" r="8"/><circle cx="180" cy="645" r="8"/><circle cx="250" cy="450" r="8"/><circle cx="250" cy="500" r="8"/><circle cx="250" cy="550" r="8"/><circle cx="250" cy="600" r="8"/><circle cx="250" cy="645" r="8"/><circle cx="320" cy="450" r="8"/><circle cx="320" cy="500" r="8"/><circle cx="320" cy="550" r="8"/><circle cx="320" cy="600" r="8"/><circle cx="320" cy="645" r="8"/><circle cx="390" cy="450" r="8"/><circle cx="390" cy="500" r="8"/><circle cx="390" cy="550" r="8"/><circle cx="390" cy="600" r="8"/><circle cx="390" cy="645" r="8"/><circle cx="460" cy="450" r="8"/><circle cx="460" cy="500" r="8"/><circle cx="460" cy="550" r="8"/><circle cx="460" cy="600" r="8"/><circle cx="460" cy="645" r="8"/><circle cx="530" cy="450" r="8"/><circle cx="530" cy="500" r="8"/><circle cx="530" cy="550" r="8"/><circle cx="530" cy="600" r="8"/><circle cx="530" cy="645" r="8"/><circle cx="600" cy="450" r="8"/><circle cx="600" cy="500" r="8"/><circle cx="600" cy="550" r="8"/><circle cx="600" cy="600" r="8"/><circle cx="600" cy="645" r="8"/><circle cx="670" cy="450" r="8"/><circle cx="670" cy="500" r="8"/><circle cx="670" cy="550" r="8"/><circle cx="670" cy="600" r="8"/><circle cx="670" cy="645" r="8"/><circle cx="740" cy="450" r="8"/><circle cx="740" cy="500" r="8"/><circle cx="740" cy="550" r="8"/><circle cx="740" cy="600" r="8"/><circle cx="740" cy="645" r="8"/><circle cx="810" cy="450" r="8"/><circle cx="810" cy="500" r="8"/><circle cx="810" cy="550" r="8"/><circle cx="810" cy="600" r="8"/><circle cx="810" cy="645" r="8"/><circle cx="880" cy="450" r="8"/><circle cx="880" cy="500" r="8"/><circle cx="880" cy="550" r="8"/><circle cx="880" cy="600" r="8"/><circle cx="880" cy="645" r="8"/><circle cx="950" cy="450" r="8"/><circle cx="950" cy="500" r="8"/><circle cx="950" cy="550" r="8"/><circle cx="950" cy="600" r="8"/><circle cx="950" cy="645" r="8"/></g>
+<g filter="url(#glow)" opacity=".9">
+  <circle cx="602" cy="552" r="28" fill="#b9f4ff" opacity=".85"/>
+  <path d="M602 552 L638 534 L665 503 M602 552 L574 524 L553 488 M602 552 L625 585 L664 612 M602 552 L570 578 L536 616" fill="none" stroke="#d9fbff" stroke-width="5" stroke-linecap="round"/>
+</g>
+<text x="72" y="650" fill="#eef8ff" font-size="42" font-family="IBM Plex Sans, Arial, sans-serif" font-weight="600">IceCube</text>
+<text x="72" y="686" fill="#b7d8ea" font-size="22" font-family="IBM Plex Sans, Arial, sans-serif">sensori nel ghiaccio antartico</text>
+</svg>
