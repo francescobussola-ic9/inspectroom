@@ -1,0 +1,498 @@
+/* Inspectroom 0.2c.2.0 — esperienza camera a nebbia */
+.ch-experience {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 312px;
+  background: #0a1524;
+  color: #e6f0f8;
+  min-height: 660px
+}
+.ch-main {
+  min-width: 0
+}
+.ch-topbar {
+  padding: 16px 22px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #294059
+}
+.ch-eyebrow,.ch-side-label,.ch-catalog-title {
+  color: #8ebbd5;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .13em
+}
+.ch-topbar h3 {
+  margin: 5px 0 0;
+  font-size: 1.32rem;
+  font-weight: 600
+}
+.ch-live {
+  white-space: nowrap;
+  color: #88dab1;
+  font-size: .7rem;
+  letter-spacing: .07em;
+  font-weight: 650
+}
+.ch-viewport {
+  height: 355px;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center,#203c4e,#08131f 72%)
+}
+.ch-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  inset: 0;
+  opacity: .83
+}
+.ch-topview {
+  background: radial-gradient(ellipse at 50% 47%,#38515f 0%,#1c303d 28%,#08131f 72%)
+}
+.ch-topview:before {
+  content: "";
+  position: absolute;
+  inset: 8% 13%;
+  border-radius: 50%;
+  border: 3px solid #638c9f80;
+  box-shadow: inset 0 0 32px #000b,0 0 20px #8ac4e111;
+  background: radial-gradient(circle,#0d1b28a8,#07121fdc)
+}
+.ch-mist {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 55% 60%,transparent 25%,#03101c50 100%)
+}
+.ch-viewport canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%
+}
+.ch-timestamp {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  padding: 6px 9px;
+  border: 1px solid #51708866;
+  border-radius: 7px;
+  background: #061725bf;
+  color: #dceef7;
+  font-size: .75rem
+}
+.ch-bullet {
+  color: #79a1b8;
+  padding: 0 4px
+}
+.ch-visual-note {
+  position: absolute;
+  bottom: 10px;
+  left: 16px;
+  color: #b2c6d2;
+  font-size: .68rem;
+  background: #081626b0;
+  padding: 5px 8px;
+  border-radius: 5px
+}
+.ch-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 13px 17px;
+  border-top: 1px solid #263f52;
+  border-bottom: 1px solid #284053;
+  background: #0e1c2d
+}
+.ch-tabs,.ch-actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap
+}
+.ch-control {
+  font: inherit;
+  font-size: 1rem;
+  border-radius: 8px;
+  padding: 9px 11px;
+  cursor: pointer;
+  border: 1px solid #47627b;
+  color: #d9e9f5;
+  background: #162c42
+}
+.ch-control:hover,.ch-control.active {
+  border-color: #8bc2e0;
+  background: #20445c;
+  color: white
+}
+.ch-control.ch-emph {
+  background: #285a75;
+  border-color: #76b0d0;
+  color: #fff
+}
+.ch-catalog {
+  padding: 16px 18px 18px;
+  background: #0c1a2a
+}
+.ch-catalog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px
+}
+.ch-catalog-title span {
+  font-size: .76rem;
+  letter-spacing: 0;
+  font-weight: 400;
+  color: #a1b8cb
+}
+.ch-types {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 9px
+}
+.ch-type {
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 11px 10px 12px;
+  border-radius: 10px;
+  background: #11283c;
+  border: 1px solid #36536b;
+  color: #e2f2fa;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0
+}
+.ch-type:hover,.ch-type.active {
+  border-color: #85c5e8;
+  background: #193e54;
+  box-shadow: inset 0 0 0 1px #82c7e515
+}
+.ch-type svg {
+  width: 100%;
+  height: 35px
+}
+.ch-type strong {
+  font-size: 1rem;
+  line-height: 1.3
+}
+.ch-type small {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #afc9dc
+}
+.ch-catalog-end {
+  padding-top: 11px
+}
+.ch-catalog-end .ch-control {
+  width: 100%
+}
+.ch-side {
+  border-left: 1px solid #30465a;
+  padding: 24px 19px;
+  background: linear-gradient(180deg,#101f30,#0d1a29)
+}
+.ch-side h3 {
+  margin: 9px 0;
+  font-size: 1.14rem
+}
+.ch-side p {
+  font-size: 1rem;
+  color: #c6d7e3;
+  line-height: 1.62;
+  margin: 0 0 15px
+}
+.ch-process {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0 22px
+}
+.ch-process div {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 1px 9px;
+  padding: 9px;
+  border: 1px solid #314d64;
+  background: #0d2235;
+  border-radius: 9px
+}
+.ch-process span {
+  grid-row: span 2;
+  color: #81bcdb;
+  font-size: .77rem;
+  font-weight: 700
+}
+.ch-process strong {
+  font-size: .83rem
+}
+.ch-process small {
+  font-size: .76rem;
+  line-height: 1.4;
+  color: #acc3d2
+}
+.ch-scenarios {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin: 10px 0 15px
+}
+.ch-reading {
+  border-left: 3px solid #81c4e4;
+  background: #102a40;
+  padding: 12px 11px;
+  display: grid;
+  gap: 4px
+}
+.ch-reading span {
+  font-size: .7rem;
+  letter-spacing: .09em;
+  color: #9cbacf
+}
+.ch-reading strong {
+  font-size: .88rem;
+  color: #f0faff
+}
+.ch-reading small {
+  font-size: .76rem;
+  color: #aac1d0
+}
+.ch-side .ch-caution {
+  font-size: .76rem;
+  color: #aebfca;
+  line-height: 1.55;
+  margin-top: 15px
+}
+@media(max-width:950px) {
+  .ch-experience {
+    grid-template-columns: 1fr
+  }
+  .ch-side {
+    border-left: 0;
+    border-top: 1px solid #30465a
+  }
+  .ch-process {
+    grid-template-columns: repeat(3,1fr)
+  }
+}
+@media(max-width:620px) {
+  .ch-topbar {
+    padding: 14px
+  }
+  .ch-live {
+    font-size: .6rem
+  }
+  .ch-viewport {
+    height: 290px
+  }
+  .ch-types {
+    grid-template-columns: 1fr
+  }
+  .ch-type {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    gap: 2px 10px
+  }
+  .ch-type svg {
+    grid-row: span 2
+  }
+  .ch-process {
+    grid-template-columns: 1fr
+  }
+  .ch-catalog-title {
+    display: block
+  }
+  .ch-catalog-title span {
+    display: block;
+    margin-top: 4px
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .ch-mist {
+    display: none
+  }
+}
+/* 0.2c.2.1: prospettiva fotografica statica e vista simulata realmente dall'alto */
+.ch-viewport {
+  background: #020305
+}
+.ch-topview {
+  background: #030405
+}
+.ch-topview:before {
+  display: none
+}
+.ch-topview .ch-mist {
+  display: none
+}
+.ch-bg {
+  object-fit: cover;
+  object-position: center 52%;
+  opacity: 1
+}
+.ch-viewport:not(.ch-topview) canvas {
+  display: none
+}
+.ch-viewport .ch-photo-note {
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  background: #06121dbd;
+  color: #dcecf4;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: .72rem
+}
+.ch-actions [hidden] {
+  display: none!important
+}
+/* 0.2c.3.2 — particle tiles in chamber and silicon detector */
+.ir-particle-section {
+  margin: 18px 0 16px
+}
+.ir-particle-heading {
+  font-size: .68rem;
+  letter-spacing: .13em;
+  font-weight: 700;
+  color: #8ebbd5;
+  margin-bottom: 10px
+}
+.ir-particle-grid {
+  display: grid;
+  gap: 8px
+}
+.ir-particle-tile {
+  font: inherit;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-align: left;
+  background: #10243a;
+  border: 1px solid #33516b;
+  border-radius: 10px;
+  color: #eaf4fb;
+  padding: 9px;
+  cursor: pointer
+}
+.ir-particle-tile:hover,.ir-particle-tile:focus-visible {
+  background: #18364f;
+  border-color: #8abdd7
+}
+.ir-particle-symbol {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border: 1px solid #69a181;
+  border-radius: 8px;
+  background: #347a57;
+  color: #effff5;
+  display: grid;
+  place-items: center;
+  font-size: 1.35rem;
+  font-weight: 600
+}
+.ir-boson .ir-particle-symbol {
+  background: #874149;
+  border-color: #b8737a
+}
+.ir-composite .ir-particle-symbol {
+  background: #324a62;
+  border-color: #829db4
+}
+.ir-particle-info {
+  display: grid;
+  gap: 2px;
+  min-width: 0
+}
+.ir-particle-info strong {
+  font-size: .91rem
+}
+.ir-particle-info small {
+  font-size: .76rem;
+  color: #a8c3d4
+}
+.ir-particle-arrow {
+  margin-left: auto;
+  color: #a8c9e1
+}
+.ir-particle-modal[hidden] {
+  display: none!important
+}
+.ir-particle-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 6500;
+  background: #03101ce0;
+  display: grid;
+  place-items: center;
+  padding: 20px
+}
+.ir-particle-dialog {
+  position: relative;
+  width: min(460px,100%);
+  border: 1px solid #65859a;
+  background: linear-gradient(155deg,#142e45,#091a2a);
+  border-radius: 14px;
+  box-shadow: 0 24px 80px #000b;
+  padding: 27px;
+  color: #edf7fe
+}
+.ir-particle-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  font: inherit;
+  font-size: 1.8rem;
+  color: #fff;
+  background: transparent;
+  border: 0;
+  cursor: pointer
+}
+.ir-particle-large-symbol {
+  display: inline-block;
+  font-size: 2.8rem;
+  color: #9ed5b1
+}
+.ir-particle-dialog h3 {
+  font-size: 1.35rem;
+  margin: 6px 0 12px
+}
+.ir-particle-dialog p {
+  font-size: .95rem;
+  color: #c5dcea;
+  line-height: 1.65
+}
+.ir-particle-family {
+  font-size: .76rem;
+  color: #a9cadd
+}
+/* Uniformità colori delle tile: riferimento alla tavola del Modello Standard. */
+.ir-lepton .ir-particle-symbol {
+  background: #396e4e;
+  border-color: #9ad6a4
+}
+.ir-boson .ir-particle-symbol {
+  background: #8b4850;
+  border-color: #e3a1a2
+}
+.ir-composite .ir-particle-symbol {
+  background: #324a62;
+  border-color: #829db4
+}
+.ir-particle-large-symbol[data-type="lepton"] {
+  color: #9ad6a4
+}
+.ir-particle-large-symbol[data-type="boson"] {
+  color: #e3a1a2
+}
+.ir-particle-large-symbol[data-type="composite"] {
+  color: #829db4
+}
