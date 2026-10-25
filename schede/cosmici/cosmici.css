@@ -1,0 +1,403 @@
+.cr-experience {
+  display: grid;
+  grid-template-columns: minmax(0,1.9fr) minmax(300px,1fr);
+  min-height: 560px;
+  background: #07111c;
+  color: #e7f0f8
+}
+.cr-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: linear-gradient(180deg,#081321 0%,#07101b 100%)
+}
+.cr-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid #183048;
+  background: linear-gradient(180deg,#0b1727 0%,#081421 100%)
+}
+.cr-eyebrow {
+  display: block;
+  color: #7dbcf1;
+  letter-spacing: .16em;
+  font-size: .78rem;
+  font-weight: 700;
+  margin-bottom: 8px
+}
+.cr-topbar h3 {
+  margin: 0;
+  font-size: 1.55rem;
+  letter-spacing: -.03em
+}
+.cr-topbar p {
+  margin: 6px 0 0;
+  color: #aebdca
+}
+.cr-live {
+  align-self: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #3f6e94;
+  background: #11283c;
+  color: #d9efff;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  white-space: nowrap
+}
+.cr-stage-wrap {
+  padding: 18px 18px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+.cr-stage {
+  position: relative;
+  border: 1px solid #234560;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #04101d;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+  aspect-ratio: 16/8.8;
+  min-height: 320px
+}
+.cr-stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block
+}
+.cr-legend {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 2px
+}
+.cr-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #102233;
+  border: 1px solid #224963;
+  color: #cfe4f5;
+  font-size: .82rem
+}
+.cr-legend i {
+  display: inline-block;
+  width: 18px;
+  height: 3px;
+  border-radius: 999px;
+  background: currentColor
+}
+.cr-caption {
+  margin: 0;
+  padding: 0 20px 18px;
+  color: #a7bac9;
+  line-height: 1.5;
+  font-size: .93rem
+}
+.cr-side {
+  padding: 22px 20px;
+  background: #0f1b29;
+  border-left: 1px solid #244055;
+  display: flex;
+  flex-direction: column;
+  gap: 16px
+}
+.cr-side-label {
+  color: #7dbcf1;
+  letter-spacing: .14em;
+  font-size: .78rem;
+  font-weight: 700
+}
+.cr-menu {
+  display: grid;
+  gap: 10px
+}
+.cr-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  background: #13283c;
+  border: 1px solid #285273;
+  color: #eef6fc;
+  border-radius: 14px;
+  padding: 14px 14px 13px;
+  transition: background .2s,border-color .2s,transform .2s
+}
+.cr-step:hover {
+  background: #17314a;
+  border-color: #5eb0eb
+}
+.cr-step.active {
+  background: #214a6a;
+  border-color: #7accff;
+  box-shadow: 0 0 0 1px rgba(126,203,255,.2) inset
+}
+.cr-step-num {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #0d1d2c;
+  border: 1px solid #4c87b4;
+  color: #d6ebfb;
+  font-weight: 700;
+  flex: 0 0 auto
+}
+.cr-step-body strong {
+  display: block;
+  margin-bottom: 4px
+}
+.cr-step-body small {
+  display: block;
+  color: #bdd0de;
+  line-height: 1.35
+}
+.cr-copy {
+  padding: 16px;
+  border: 1px solid #24445d;
+  border-radius: 14px;
+  background: linear-gradient(180deg,#0f2232 0%,#0c1a28 100%)
+}
+.cr-copy h4 {
+  margin: 0 0 10px;
+  font-size: 1.08rem
+}
+.cr-copy p {
+  margin: 0;
+  color: #d6e0e9;
+  line-height: 1.62
+}
+.cr-mini-note {
+  padding: 12px 14px;
+  border: 1px solid #24445d;
+  border-radius: 12px;
+  background: #0b1723;
+  color: #b7c9d8;
+  font-size: .93rem;
+  line-height: 1.5
+}
+.cr-particles {
+  display: grid;
+  gap: 10px
+}
+.cr-particles h4 {
+  margin: 0 0 2px;
+  font-size: 1rem
+}
+.cr-particle-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px
+}
+.cr-particle-tile {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  background: #102234;
+  border: 1px solid #2b526f;
+  border-radius: 14px;
+  color: #f0f7fc;
+  padding: 11px 12px;
+  text-align: left
+}
+.cr-particle-tile:hover {
+  border-color: #7accff;
+  background: #14314a
+}
+.cr-particle-symbol {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff
+}
+.cr-particle-info strong {
+  display: block;
+  font-size: 1rem
+}
+.cr-particle-info small {
+  display: block;
+  color: #b8ccda;
+  margin-top: 2px
+}
+.cr-particle-arrow {
+  font-size: 1.2rem;
+  color: #86cfff
+}
+.cr-quark {
+  background: #8a70d6
+}
+.cr-lepton {
+  background: #3d8a62
+}
+.cr-boson {
+  background: #b66357
+}
+.cr-composite {
+  background: #5178b0
+}
+.cr-particle-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,8,14,.7);
+  display: grid;
+  place-items: center;
+  z-index: 25;
+  padding: 20px
+}
+.cr-particle-dialog {
+  width: min(420px,100%);
+  background: #142333;
+  border: 1px solid #40617c;
+  border-radius: 18px;
+  padding: 22px 22px 20px;
+  position: relative;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45)
+}
+.cr-particle-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #0e1b28;
+  border: 1px solid #4c647a;
+  color: #eaf3f9;
+  border-radius: 10px;
+  width: 34px;
+  height: 34px
+}
+.cr-particle-large-symbol {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  background: #3d8a62
+}
+.cr-particle-dialog h3 {
+  margin: 0 0 6px;
+  font-size: 1.25rem
+}
+.cr-particle-dialog p {
+  margin: 0 0 12px;
+  color: #d7e2eb;
+  line-height: 1.58
+}
+.cr-particle-family {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #102437;
+  border: 1px solid #355370;
+  color: #cfe3f3;
+  font-size: .88rem
+}
+@media(max-width:960px) {
+  .cr-experience {
+    grid-template-columns: 1fr
+  }
+  .cr-side {
+    border-left: none;
+    border-top: 1px solid #244055
+  }
+  .cr-topbar {
+    align-items: flex-start;
+    flex-direction: column
+  }
+  .cr-live {
+    align-self: flex-start
+  }
+}
+@media(max-width:640px) {
+  .cr-stage {
+    min-height: 260px
+  }
+  .cr-step {
+    padding: 12px
+  }
+  .cr-topbar {
+    padding: 16px
+  }
+  .cr-stage-wrap {
+    padding: 14px 14px 8px
+  }
+  .cr-caption {
+    padding: 0 16px 16px
+  }
+}
+/* La finestra particella deve rispettare l’attributo hidden. */
+.cr-particle-modal[hidden] {
+  display: none!important
+}
+/* 0.2c.5.2: spiegazioni in toggle direttamente sotto ogni tappa */
+.cr-menu {
+  gap: 0
+}
+.cr-step {
+  width: 100%;
+  margin-top: 9px
+}
+.cr-step-body {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  padding-right: 24px
+}
+.cr-expand {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.3rem;
+  color: #9bd5fc
+}
+.cr-step-detail {
+  padding: 12px 15px 14px 52px;
+  margin: 0 1px 7px;
+  background: #10273a;
+  border: 1px solid #2a536f;
+  border-top: none;
+  border-radius: 0 0 12px 12px
+}
+.cr-step-detail p {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: #d7e5ef
+}
+.cr-step-detail[hidden] {
+  display: none!important
+}
+.cr-step.active {
+  border-radius: 14px 14px 0 0
+}
+/* Uniformità colori delle tile: riferimento alla tavola del Modello Standard. */
+.cr-particle-symbol.cr-quark,.cr-particle-large-symbol.cr-quark {
+  background: #634579
+}
+.cr-particle-symbol.cr-lepton,.cr-particle-large-symbol.cr-lepton {
+  background: #396e4e
+}
+.cr-particle-symbol.cr-boson,.cr-particle-large-symbol.cr-boson {
+  background: #8b4850
+}
+.cr-particle-symbol.cr-composite,.cr-particle-large-symbol.cr-composite {
+  background: #324a62
+}
