@@ -33,11 +33,15 @@ function renderNucleone() {
   dialogContent.innerHTML = `<div class="nu-experience" id="nuExperience">
     <div class="nu-main">
       <div class="nu-topbar">
-        <div><span class="nu-eyebrow">INSPECTROOM · QUARK E GLUONI</span><h3>Dal deuterio al confinamento</h3><p>Un percorso in tre passaggi: atomo, nucleoni, quark e gluoni.</p></div>
+        <div><span class="nu-eyebrow">ESPLORA · QUARK E GLUONI</span><h3>Alla scoperta di quark e gluoni</h3><p>Esplora il nucleo di un atomo e scopri che cosa tiene uniti protoni e neutroni.</p></div>
         <span class="nu-live">ESPERIMENTO INTERATTIVO</span>
       </div>
       <div class="nu-stage-wrap">
-        <div class="nu-step-nav" id="nuStepNav">${nuSteps.map((s, i) => `<button class="nu-step-tab ${i === 0 ? 'active' : ''}" type="button" data-nu-goto="${i}"><em>${i + 1}</em><span>${s.title}</span></button>`).join('')}</div>
+        <div class="nu-info-panel" aria-live="polite">
+          <div class="nu-info-copy" data-nu-info="0"><strong>Questo è un atomo di deuterio.</strong><p>Nel nucleo ci sono un <strong>protone</strong> e un <strong>neutrone</strong>.</p><button type="button" class="nu-cta" data-nu-next="1">Esplora il nucleo →</button></div>
+          <div class="nu-info-copy" data-nu-info="1" hidden><strong>Il protone e il neutrone sono formati da quark.</strong><p>Questi quark sono le particelle che usiamo per descrivere la struttura interna dei nucleoni.</p><button type="button" class="nu-cta" data-nu-next="2">Scopri cosa li tiene uniti →</button></div>
+          <div class="nu-info-copy" data-nu-info="2" hidden><strong>I quark sono tenuti insieme dai gluoni.</strong><p>Prova a separare i quark: più allontani quello verde, più il legame diventa intenso. Quando lo lasci, il quark torna verso gli altri.</p></div>
+        </div>
         <div class="nu-stage" id="nuStage">
           <div class="nu-scene nu-step1 active" data-nu-scene="0">
             <div class="nu-atom-shell"></div>
@@ -49,7 +53,6 @@ function renderNucleone() {
             </div>
             <div class="nu-tag" style="left:50%;top:32%;transform:translateX(-50%)">nucleo di deuterio</div>
             <div class="nu-tag" style="left:68%;top:14%">elettrone</div>
-            <div class="nu-note"><div class="nu-card"><strong>Questo è un atomo di deuterio.</strong><p>Nel nucleo ci sono un <strong>protone</strong> e un <strong>neutrone</strong>.</p><button type="button" class="nu-cta" data-nu-next="1">Clicca e scopri come sono fatti →</button></div></div>
           </div>
           <div class="nu-scene nu-step2" data-nu-scene="1">
             <div class="nu-nucleon-card proton-card">
@@ -62,7 +65,6 @@ function renderNucleone() {
             </div>
             <div class="nu-tag" style="left:18%;top:12%">protone</div>
             <div class="nu-tag" style="right:18%;top:12%">neutrone</div>
-            <div class="nu-note"><div class="nu-card"><strong>Il protone e il neutrone sono formati da quark.</strong><p>Questi quark sono le particelle che usiamo per descrivere la struttura interna dei nucleoni.</p><button type="button" class="nu-cta" data-nu-next="2">Clicca per scoprire cosa li tiene assieme →</button></div></div>
           </div>
           <div class="nu-scene nu-step3" data-nu-scene="2">
             <div class="nu-proton-area">
@@ -91,7 +93,6 @@ function renderNucleone() {
               <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 72c-2-3-3-6-3-10V44c0-3 2-5 5-5s5 2 5 5v-18c0-3 2-5 5-5s5 2 5 5v15c0-3 2-5 5-5s5 2 5 5v4c0-3 2-5 5-5s5 2 5 5v20c0 10-8 18-18 18H49c-5 0-10-2-13-6Z" fill="rgba(244,249,255,.92)"/><path d="M63 26v22M53 31v17M43 28v15" stroke="rgba(9,22,34,.45)" stroke-width="2.6" stroke-linecap="round"/></svg>
             </div>
             <div class="nu-hand-text" id="nuHandText">Trascina un quark</div>
-            <div class="nu-note"><div class="nu-card"><strong>I quark sono tenuti insieme dai gluoni.</strong><p>Prova a separare i quark: più allontani quello verde, più il legame diventa intenso. Quando lo lasci, il quark torna verso gli altri.</p></div></div>
           </div>
         </div>
       </div>
@@ -100,22 +101,21 @@ function renderNucleone() {
     <aside class="nu-side">
       <div class="nu-side-label">ESPLORA · APRI UNA TAPPA</div>
       <div class="nu-menu" id="nuMenu">${nuSteps.map((step, i) => `<button class="nu-step ${i === 0 ? 'active' : ''}" type="button" data-nu-step="${i}" aria-expanded="${i === 0 ? 'true' : 'false'}"><span class="nu-step-num">${i + 1}</span><span class="nu-step-body"><strong>${step.title}</strong><small>${step.short}</small><span class="nu-expand" aria-hidden="true">${i === 0 ? '−' : '+'}</span></span></button><div class="nu-step-detail" data-nu-detail="${i}" ${i === 0 ? '' : 'hidden'}><p>${step.text}</p></div>`).join('')}</div>
-      <div class="nu-mini-note"><strong>Idea chiave:</strong> il percorso parte da un <strong>atomo di deuterio</strong>, entra nei <strong>nucleoni</strong> e si conclude con un mini esperimento sul <strong>confinamento dei quark</strong>.</div>
       ${nuParticleTiles(['proton', 'neutron', 'quark', 'gluon'])}
     </aside>
   </div>`;
   const root = document.getElementById('nuExperience');
   nuBindParticleTiles(root);
-  const tabs = [...root.querySelectorAll('[data-nu-goto]')];
   const steps = [...root.querySelectorAll('[data-nu-step]')];
   const scenes = [...root.querySelectorAll('[data-nu-scene]')];
   const details = [...root.querySelectorAll('[data-nu-detail]')];
+  const infoCopies = [...root.querySelectorAll('[data-nu-info]')];
   let currentStep = 0;
   let dragInitDone = false;
   function setStep(i) {
     currentStep = Math.max(0, Math.min(2, i));
     scenes.forEach((scene, idx) => scene.classList.toggle('active', idx === currentStep));
-    tabs.forEach((tab, idx) => tab.classList.toggle('active', idx === currentStep));
+    infoCopies.forEach((info, idx) => {info.hidden = idx !== currentStep;});
     steps.forEach((btn, idx) => {
       const active = idx === currentStep;
       btn.classList.toggle('active', active);
@@ -125,7 +125,6 @@ function renderNucleone() {
     });
     if (currentStep === 2 && !dragInitDone) {dragInitDone = true; nuInitDrag(root);}
   }
-  tabs.forEach(btn => btn.addEventListener('click', () => setStep(Number(btn.dataset.nuGoto))));
   steps.forEach(btn => btn.addEventListener('click', () => setStep(Number(btn.dataset.nuStep))));
   root.querySelectorAll('[data-nu-next]').forEach(btn => btn.addEventListener('click', () => setStep(Number(btn.dataset.nuNext))));
   setStep(0);
