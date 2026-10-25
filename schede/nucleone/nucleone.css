@@ -1,0 +1,740 @@
+.nu-experience {
+  display: grid;
+  grid-template-columns: minmax(0,1.9fr) minmax(310px,1fr);
+  min-height: 560px;
+  background: #07111c;
+  color: #e7f0f8
+}
+.nu-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: linear-gradient(180deg,#081321 0%,#07101b 100%)
+}
+.nu-topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+  padding: 18px 22px 14px;
+  border-bottom: 1px solid #183048;
+  background: linear-gradient(180deg,#0b1727 0%,#081421 100%)
+}
+.nu-eyebrow {
+  display: block;
+  color: #7dbcf1;
+  letter-spacing: .16em;
+  font-size: .78rem;
+  font-weight: 700;
+  margin-bottom: 8px
+}
+.nu-topbar h3 {
+  margin: 0;
+  font-size: 1.55rem;
+  letter-spacing: -.03em
+}
+.nu-topbar p {
+  margin: 6px 0 0;
+  color: #aebdca
+}
+.nu-live {
+  align-self: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #4a708f;
+  background: #11283c;
+  color: #d9efff;
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  white-space: nowrap
+}
+.nu-stage-wrap {
+  padding: 18px 18px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+.nu-step-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap
+}
+.nu-step-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px;
+  border-radius: 999px;
+  border: 1px solid #284b67;
+  background: #0f2334;
+  color: #d9ebf7;
+  font-size: .92rem
+}
+.nu-step-tab:hover {
+  border-color: #79c5f8;
+  background: #153149
+}
+.nu-step-tab.active {
+  background: #214a6a;
+  border-color: #7accff;
+  box-shadow: 0 0 0 1px rgba(126,203,255,.18) inset
+}
+.nu-step-tab em {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-style: normal;
+  font-weight: 700;
+  background: #08131e;
+  border: 1px solid #4a7ca5;
+  color: #d6ebfb;
+  font-size: .85rem
+}
+.nu-stage {
+  position: relative;
+  border: 1px solid #234560;
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 35%,rgba(34,70,104,.25),transparent 55%),linear-gradient(180deg,#06111d 0%,#081523 100%);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+  aspect-ratio: 16/9;
+  min-height: 350px
+}
+.nu-scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease
+}
+.nu-scene.active {
+  opacity: 1;
+  pointer-events: auto
+}
+.nu-note {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  display: flex;
+  justify-content: flex-start;
+  pointer-events: none
+}
+.nu-card {
+  max-width: min(600px,90%);
+  background: rgba(8,20,31,.92);
+  border: 1px solid rgba(117,178,223,.42);
+  box-shadow: 0 18px 42px rgba(0,0,0,.34);
+  border-radius: 16px;
+  padding: 14px 16px 15px;
+  pointer-events: auto
+}
+.nu-card strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #f5fbff
+}
+.nu-card p {
+  margin: 0;
+  color: #d4e1eb;
+  line-height: 1.52;
+  font-size: .95rem
+}
+.nu-cta {
+  margin-top: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #6ec3f3;
+  background: #153047;
+  color: #f2fbff;
+  font-weight: 700;
+  font-size: .95rem
+}
+.nu-cta:hover {
+  background: #1a3c59;
+  border-color: #98dcff
+}
+.nu-caption {
+  margin: 0;
+  padding: 0 20px 18px;
+  color: #a7bac9;
+  line-height: 1.5;
+  font-size: .93rem
+}
+.nu-side {
+  padding: 22px 20px;
+  background: #0f1b29;
+  border-left: 1px solid #244055;
+  display: flex;
+  flex-direction: column;
+  gap: 16px
+}
+.nu-side-label {
+  color: #7dbcf1;
+  letter-spacing: .14em;
+  font-size: .78rem;
+  font-weight: 700
+}
+.nu-menu {
+  display: grid;
+  gap: 0
+}
+.nu-step {
+  width: 100%;
+  margin-top: 9px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  background: #13283c;
+  border: 1px solid #285273;
+  color: #eef6fc;
+  border-radius: 14px;
+  padding: 14px 14px 13px;
+  transition: background .2s,border-color .2s,transform .2s
+}
+.nu-step:hover {
+  background: #17314a;
+  border-color: #5eb0eb
+}
+.nu-step.active {
+  background: #214a6a;
+  border-color: #7accff;
+  box-shadow: 0 0 0 1px rgba(126,203,255,.2) inset;
+  border-radius: 14px 14px 0 0
+}
+.nu-step-num {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #0d1d2c;
+  border: 1px solid #4c87b4;
+  color: #d6ebfb;
+  font-weight: 700;
+  flex: 0 0 auto
+}
+.nu-step-body {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  padding-right: 24px
+}
+.nu-step-body strong {
+  display: block;
+  margin-bottom: 4px
+}
+.nu-step-body small {
+  display: block;
+  color: #bdd0de;
+  line-height: 1.35
+}
+.nu-expand {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.3rem;
+  color: #9bd5fc
+}
+.nu-step-detail {
+  padding: 12px 15px 14px 52px;
+  margin: 0 1px 7px;
+  background: #10273a;
+  border: 1px solid #2a536f;
+  border-top: none;
+  border-radius: 0 0 12px 12px
+}
+.nu-step-detail p {
+  margin: 0;
+  font-size: .9rem;
+  line-height: 1.6;
+  color: #d7e5ef
+}
+.nu-step-detail[hidden] {
+  display: none!important
+}
+.nu-mini-note {
+  padding: 12px 14px;
+  border: 1px solid #24445d;
+  border-radius: 12px;
+  background: #0b1723;
+  color: #b7c9d8;
+  font-size: .93rem;
+  line-height: 1.5
+}
+.nu-particles {
+  display: grid;
+  gap: 10px
+}
+.nu-particles h4 {
+  margin: 0 0 2px;
+  font-size: 1rem
+}
+.nu-particle-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 9px
+}
+.nu-particle-tile {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  background: #102234;
+  border: 1px solid #2b526f;
+  border-radius: 14px;
+  color: #f0f7fc;
+  padding: 11px 12px;
+  text-align: left
+}
+.nu-particle-tile:hover {
+  border-color: #7accff;
+  background: #14314a
+}
+.nu-particle-symbol {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fff
+}
+.nu-particle-info strong {
+  display: block;
+  font-size: 1rem
+}
+.nu-particle-info small {
+  display: block;
+  color: #b8ccda;
+  margin-top: 2px
+}
+.nu-particle-arrow {
+  font-size: 1.2rem;
+  color: #86cfff
+}
+.nu-quark {
+  background: #8a70d6
+}
+.nu-boson {
+  background: #b66357
+}
+.nu-composite {
+  background: #5178b0
+}
+.nu-particle-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,8,14,.7);
+  display: grid;
+  place-items: center;
+  z-index: 25;
+  padding: 20px
+}
+.nu-particle-modal[hidden] {
+  display: none!important
+}
+.nu-particle-dialog {
+  width: min(420px,100%);
+  background: #142333;
+  border: 1px solid #40617c;
+  border-radius: 18px;
+  padding: 22px 22px 20px;
+  position: relative;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45)
+}
+.nu-particle-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #0e1b28;
+  border: 1px solid #4c647a;
+  color: #eaf3f9;
+  border-radius: 10px;
+  width: 34px;
+  height: 34px
+}
+.nu-particle-large-symbol {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 14px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  background: #8a70d6
+}
+.nu-particle-dialog h3 {
+  margin: 0 0 6px;
+  font-size: 1.25rem
+}
+.nu-particle-dialog p {
+  margin: 0 0 12px;
+  color: #d7e2eb;
+  line-height: 1.58
+}
+.nu-particle-family {
+  display: inline-block;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #102437;
+  border: 1px solid #355370;
+  color: #cfe3f3;
+  font-size: .88rem
+}
+.nu-tag {
+  position: absolute;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(10,22,34,.88);
+  border: 1px solid rgba(100,174,227,.45);
+  color: #d9edfa;
+  font-size: .84rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  white-space: nowrap
+}
+.nu-step1 .nu-atom-shell,.nu-step1 .nu-cloud {
+  position: absolute;
+  inset: 8% 16% 18% 16%;
+  border-radius: 50%
+}
+.nu-step1 .nu-atom-shell {
+  border: 1px solid rgba(124,191,244,.38);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.02) inset,0 0 34px rgba(116,186,237,.12) inset;
+  transform: scaleX(1.08)
+}
+.nu-step1 .nu-atom-shell::before,.nu-step1 .nu-atom-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(124,191,244,.18)
+}
+.nu-step1 .nu-atom-shell::before {
+  transform: rotate(57deg) scaleX(.64)
+}
+.nu-step1 .nu-atom-shell::after {
+  transform: rotate(-57deg) scaleX(.64)
+}
+.nu-step1 .nu-cloud {
+  background: radial-gradient(circle at 50% 50%,rgba(111,180,234,.16) 0,rgba(111,180,234,.09) 28%,rgba(111,180,234,.03) 54%,transparent 72%)
+}
+.nu-step1 .nu-electron-orbit {
+  position: absolute;
+  inset: 12% 20% 20% 20%;
+  animation: nu-rotate 11s linear infinite;
+  transform-origin: 50% 50%
+}
+.nu-step1 .nu-electron {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f0d16d;
+  box-shadow: 0 0 18px rgba(240,209,109,.75);
+  top: 10%;
+  left: 72%
+}
+.nu-step1 .nu-nucleus-wrap {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  transform: translate(-50%,-50%);
+  width: 188px;
+  height: 126px
+}
+.nu-nucleon {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  box-shadow: 0 0 22px rgba(0,0,0,.22)
+}
+.nu-proton {
+  background: radial-gradient(circle at 35% 30%,#ffa97f 0,#da6e56 62%,#aa483d 100%);
+  left: 20px;
+  top: 21px
+}
+.nu-neutron {
+  background: radial-gradient(circle at 35% 30%,#8cc5f3 0,#5f98c7 62%,#37668e 100%);
+  right: 20px;
+  top: 21px
+}
+.nu-step2 .nu-nucleon-card {
+  position: absolute;
+  top: 16%;
+  width: 34%;
+  height: 44%;
+  border-radius: 22px;
+  border: 1px solid rgba(122,191,240,.28);
+  background: linear-gradient(180deg,rgba(13,26,39,.96),rgba(8,17,27,.94));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02),0 16px 30px rgba(0,0,0,.2)
+}
+.nu-step2 .nu-nucleon-card.proton-card {
+  left: 10%
+}
+.nu-step2 .nu-nucleon-card.neutron-card {
+  right: 10%
+}
+.nu-step2 .nu-nucleon-card h4 {
+  margin: 16px 0 0;
+  text-align: center;
+  font-size: 1.08rem
+}
+.nu-step2 .nu-nucleon-card p {
+  margin: 6px 22px 0;
+  text-align: center;
+  color: #aecdde;
+  font-size: .9rem
+}
+.nu-quark-chip {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  box-shadow: 0 0 0 1px rgba(255,255,255,.05) inset,0 8px 18px rgba(0,0,0,.24)
+}
+.nu-quark-u {
+  background: radial-gradient(circle at 35% 30%,#b6a0ff 0,#7d61d8 62%,#543d9e 100%)
+}
+.nu-quark-d {
+  background: radial-gradient(circle at 35% 30%,#ffd58c 0,#cc8b49 62%,#9a5a20 100%)
+}
+.nu-q1 {
+  left: 26%;
+  top: 33%
+}
+.nu-q2 {
+  left: 12%;
+  top: 60%
+}
+.nu-q3 {
+  left: 54%;
+  top: 58%
+}
+.nu-step3 .nu-proton-area {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 4%;
+  bottom: 4%
+}
+.nu-proton-area svg {
+  width: 100%;
+  height: 100%;
+  display: block
+}
+.nu-energy {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: min(220px,42%);
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(7,17,28,.9);
+  border: 1px solid rgba(122,191,240,.28);
+  box-shadow: 0 14px 30px rgba(0,0,0,.22)
+}
+.nu-energy strong {
+  display: block;
+  font-size: .92rem;
+  margin-bottom: 8px
+}
+.nu-energy-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: #13283a;
+  overflow: hidden;
+  border: 1px solid #294b66
+}
+.nu-energy-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,#79c4ff 0%,#d5be74 48%,#ffad7c 100%);
+  box-shadow: 0 0 18px rgba(255,206,132,.2)
+}
+.nu-energy small {
+  display: block;
+  margin-top: 8px;
+  color: #b9cddc;
+  line-height: 1.45
+}
+.nu-hand {
+  position: absolute;
+  left: 59%;
+  top: 42%;
+  width: 84px;
+  height: 84px;
+  opacity: .52;
+  pointer-events: none;
+  transition: opacity .2s ease;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,.35))
+}
+.nu-hand svg {
+  width: 100%;
+  height: 100%
+}
+.nu-hand.hidden {
+  opacity: 0
+}
+.nu-hand-text {
+  position: absolute;
+  left: 53%;
+  top: 56%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(7,17,28,.88);
+  border: 1px solid rgba(122,191,240,.28);
+  color: #dbeefb;
+  font-size: .84rem;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: .92;
+  transition: opacity .2s ease
+}
+.nu-hand-text.hidden {
+  opacity: 0
+}
+.nu-hand-anim {
+  animation: nu-drag 2.4s ease-in-out infinite
+}
+.nu-proton-label {
+  fill: #d9edf9;
+  font-weight: 700;
+  letter-spacing: .08em;
+  font-size: 12px
+}
+.nu-proton-note {
+  fill: #b5cbdd;
+  font-size: 12px
+}
+.nu-link {
+  stroke: #77c1ff;
+  stroke-width: 10;
+  opacity: .16;
+  filter: url(#nuGlow)
+}
+.nu-link-core {
+  stroke: #8dd4ff;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  fill: none
+}
+.nu-dashed {
+  stroke-dasharray: 4 8
+}
+@keyframes nu-rotate {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+@keyframes nu-drag {
+  0%,10% {
+    transform: translate(0,0)
+  }
+  40% {
+    transform: translate(42px,-6px)
+  }
+  65% {
+    transform: translate(20px,-3px)
+  }
+  100% {
+    transform: translate(0,0)
+  }
+}
+@media(max-width:960px) {
+  .nu-experience {
+    grid-template-columns: 1fr
+  }
+  .nu-side {
+    border-left: none;
+    border-top: 1px solid #244055
+  }
+  .nu-topbar {
+    align-items: flex-start;
+    flex-direction: column
+  }
+  .nu-live {
+    align-self: flex-start
+  }
+  .nu-energy {
+    width: min(230px,54%)
+  }
+}
+@media(max-width:700px) {
+  .nu-stage {
+    min-height: 300px
+  }
+  .nu-topbar {
+    padding: 16px
+  }
+  .nu-stage-wrap {
+    padding: 14px 14px 8px
+  }
+  .nu-caption {
+    padding: 0 16px 16px
+  }
+  .nu-note {
+    left: 14px;
+    right: 14px;
+    bottom: 14px
+  }
+  .nu-card {
+    max-width: 100%
+  }
+  .nu-step1 .nu-nucleus-wrap {
+    transform: translate(-50%,-50%) scale(.88)
+  }
+  .nu-step2 .nu-nucleon-card {
+    top: 15%;
+    height: 48%;
+    width: 39%
+  }
+  .nu-step2 .nu-quark-chip {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem
+  }
+}
+/* Le scene inattive non devono coprire i comandi delle scene visibili. */
+.nu-scene {
+  visibility: hidden
+}
+.nu-scene.active {
+  visibility: visible
+}
+/* Uniformità colori delle tile: riferimento alla tavola del Modello Standard. */
+.nu-particle-symbol.nu-quark,.nu-particle-large-symbol.nu-quark {
+  background: #634579
+}
+.nu-particle-symbol.nu-boson,.nu-particle-large-symbol.nu-boson {
+  background: #8b4850
+}
+.nu-particle-symbol.nu-composite,.nu-particle-large-symbol.nu-composite {
+  background: #324a62
+}
