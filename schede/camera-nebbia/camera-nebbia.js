@@ -6,6 +6,12 @@ function renderChamber() {
   dialogContent.innerHTML = `<div class="ch-experience" id="chExperience">
     <div class="ch-main">
       <div class="ch-topbar"><div><span class="ch-eyebrow">INSPECTROOM · CAMERA A NEBBIA</span><h3>Tracce dell'invisibile</h3></div><span class="ch-live" id="chLive">${chamber.view === 'perspective' ? 'FOTOGRAFIA DELLA CAMERA' : '● SIMULAZIONE ATTIVA'}</span></div>
+      <section class="ch-catalog" aria-label="Che cos'è una camera a nebbia?">
+        <h3>Che cos'è una camera a nebbia?</h3>
+        <p>La <strong>camera a nebbia</strong> è uno strumento che permette di rendere visibile il passaggio di alcune particelle invisibili ai nostri occhi.</p>
+        <p>Al suo interno si trova del vapore di alcol. Quando una particella carica attraversa la camera, può far condensare il vapore in minuscole goccioline lungo il suo percorso.</p>
+        <p>Si forma così una sottile scia, simile a quella lasciata da un aereo nel cielo. Osservando queste tracce possiamo ottenere informazioni sulle particelle che le hanno prodotte.</p>
+      </section>
       <div class="ch-viewport ${chamber.view === 'top' ? 'ch-topview' : ''}" id="chViewport">
         ${chamber.view === 'perspective' ? '<img class="ch-bg" src="assets/chamber-perspective.webp" alt="Fotografia prospettica della camera a nebbia, senza comandi sovrapposti"/>' : ''}
         ${chamber.view === 'top' ? '<div class="ch-mist" aria-hidden="true"></div>' : ''}
