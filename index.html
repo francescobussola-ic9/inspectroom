@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101923">
+<title>Inspectroom — 0.3.5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="schede/camera-nebbia/camera-nebbia.css">
+<link rel="stylesheet" href="schede/minipix/minipix.css">
+<link rel="stylesheet" href="schede/kcl/kcl.css">
+<link rel="stylesheet" href="schede/modello-standard/modello-standard.css">
+<link rel="stylesheet" href="schede/lampada/lampada.css">
+<link rel="stylesheet" href="schede/telescopio/telescopio.css">
+<link rel="stylesheet" href="schede/cosmici/cosmici.css">
+<link rel="stylesheet" href="schede/nucleone/nucleone.css">
+<link rel="stylesheet" href="schede/libro/libro.css">
+<link rel="stylesheet" href="style-uniform-9.5.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <img src="assets/logo-inspectroom.png" alt="INSPECTROOM" class="brand-logo">
+    <small>Laboratorio interattivo di fisica delle particelle · v0.3.5</small>
+  </div>
+  <nav class="actions" aria-label="Comandi dell'aula">
+    <button class="btn selected" id="realBtn">◉ Realtà</button>
+    <button class="btn" id="pinsBtn">◎ Evidenzia oggetti</button>
+    <button class="btn" id="revealBtn">◈ Rivela</button>
+    <button class="btn" id="modelBtn">▦ Modello Standard</button>
+    <button class="btn" id="helpBtn">Come funziona?</button>
+  </nav>
+</header>
+<main>
+  <div class="scene-wrap" id="sceneWrap">
+    <div class="scene-stage" id="sceneStage">
+    <div id="scene" class="scene"></div>
+    
+    <div class="veil"></div>
+    <div class="particles" aria-hidden="true"><canvas id="ambientCanvas" width="1536" height="640"></canvas></div>
+    <div class="tag" id="modeTag" hidden>Non tutto ciò che esiste è visibile</div>
+    </div>
+  </div>
+  <section class="dock dock-guide" aria-label="Informazioni su Inspectroom">
+    <div class="panel dock-instructions">
+      <h2>Come usare Inspectroom</h2>
+      <p>Puoi esplorare l’aula <strong>cliccando su alcuni oggetti</strong> per aprire le esperienze interattive.</p>
+      <div class="dock-guide-steps">
+        <p>Il pulsante <strong>Realtà</strong> mostra l’aula senza effetti aggiuntivi.</p>
+        <p>Il pulsante <strong>Rivela</strong> rende visibili fenomeni e particelle normalmente invisibili. I cerchietti indicano gli oggetti esplorabili.</p>
+        <p>Il pulsante <strong>Evidenzia oggetti</strong> rende più visibili i punti su cui cliccare.</p>
+        <p>Il pulsante <strong>Modello Standard</strong> apre la tavola delle particelle.</p>
+      </div>
+    </div>
+    <div class="panel dock-credits">
+      
+		<h2>Credits</h2>
+		<p>
+		  <strong>INSPECTROOM</strong><br>
+		  Applicazione web didattica per esplorare la fisica delle particelle.
+		</p>
+
+		<p>
+		  Ideazione e progettazione scientifica e didattica:
+		  <strong>Francesco Bussola</strong>.
+		</p>
+
+		<p class="subtle">
+		  © 2026 Francesco Bussola · Codice con licenza MIT.
+		</p>
+    </div>
+  </section>
+</main>
+<div id="overlay" class="overlay" role="presentation">
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+    <div class="dialog-head"><h2 id="dialogTitle">Esperienza</h2><button class="btn" id="closeBtn">← Torna all'aula</button></div>
+    <div id="dialogContent"></div>
+  </div>
+</div>
+<script src="home/state.js" defer></script>
+<script src="home/rivela.js" defer></script>
+<script src="home/navigation.js" defer></script>
+<script src="schede/camera-nebbia/camera-nebbia.js" defer></script>
+<script src="schede/minipix/minipix.js" defer></script>
+<script src="schede/kcl/kcl.js" defer></script>
+<script src="schede/modello-standard/modello-standard.js" defer></script>
+<script src="schede/guida.js" defer></script>
+<script src="schede/libro/libro.js" defer></script>
+<script src="schede/telescopio/telescopio.js" defer></script>
+<script src="schede/lampada/lampada.js" defer></script>
+<script src="schede/cosmici/cosmici.js" defer></script>
+<script src="schede/nucleone/nucleone.js" defer></script>
+<script src="schede/introduzioni.js" defer></script>
+<script src="home/home.js" defer></script>
+</body>
+</html>
