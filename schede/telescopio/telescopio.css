@@ -1,0 +1,2368 @@
+/* Isolato: nessun selettore modifica le altre esperienze. */
+.tel-app {
+  --tel-color: #b1ff4d;
+  --tel-light-opacity: .5;
+  --tel-impact-scale: 1;
+  background: #0a1526;
+  color: #eaf3ff;
+  font-family: inherit;
+  width: 100%
+}
+.tel-toolbar {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-bottom: 1px solid #263e57;
+  background: #0a182b
+}
+.tel-toolbar strong {
+  font-size: calc(1.12rem + 1.333333px);
+  font-weight: 600;
+  letter-spacing: .01em
+}
+.tel-kicker {
+  font-size: .67rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  color: #68a9d4
+}
+.tel-workspace {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 65% 30%,#1d2444 0%,#09172c 60%,#07111c 100%)
+}
+.tel-workspace svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(55vh,510px)
+}
+.tel-ray.halo {
+  stroke: var(--tel-color);
+  opacity: calc(var(--tel-light-opacity) * .32);
+  stroke-width: 9;
+  filter: url(#telGlow)
+}
+.tel-ray.fine {
+  stroke: var(--tel-color);
+  opacity: var(--tel-light-opacity);
+  stroke-width: 1.6
+}
+.tel-ray.shimmer {
+  stroke: #fffbd1;
+  opacity: calc(var(--tel-light-opacity) * .6);
+  stroke-width: 1;
+  stroke-dasharray: 2 20;
+  animation: telDrift 4s linear infinite
+}
+.tel-workspace #telImpact {
+  opacity: var(--tel-light-opacity);
+  transform-origin: 966px 246px;
+  transform: scale(var(--tel-impact-scale));
+  animation: telPulse 2.1s ease-in-out infinite
+}
+.tel-labels {
+  font-family: inherit;
+  fill: #d3e1eb;
+  font-size: calc(12px + 1.333333px);
+  letter-spacing: 1.4px;
+  font-weight: 650
+}
+.tel-target,.tel-source {
+  cursor: pointer;
+  outline: none
+}
+.tel-target:hover,.tel-target.tel-active {
+  filter: drop-shadow(0 0 5px #76b9f5aa)
+}
+.tel-info {
+  position: absolute;
+  left: 24px;
+  bottom: 10px;
+  max-width: 440px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border: 1px solid #416181a8;
+  border-radius: 10px;
+  background: #071726dd;
+  backdrop-filter: blur(8px)
+}
+.tel-info-num {
+  color: #74c5f4;
+  font-size: .7rem;
+  font-weight: 800;
+  padding-top: 3px
+}
+.tel-info b {
+  display: block;
+  font-size: .92rem
+}
+.tel-info p {
+  margin: 5px 0 0;
+  font-size: .82rem;
+  line-height: 1.5;
+  color: #c9d7e4
+}
+.tel-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.16fr;
+  gap: 24px;
+  padding: 20px 24px 16px;
+  border-top: 1px solid #28415b;
+  background: #101d31
+}
+.tel-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: .82rem;
+  color: #c8d7e7
+}
+.tel-controls label span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px
+}
+.tel-controls output {
+  color: #78c5ea;
+  white-space: nowrap
+}
+.tel-controls input {
+  width: 100%;
+  accent-color: #61b6df;
+  cursor: pointer
+}
+.tel-controls #telWavelength {
+  accent-color: #62cedf;
+  background: linear-gradient(to right,#7843db,#2448ef,#20baf8,#40e083,#f2e24c,#f99c28,#fa4448);
+  height: 8px;
+  border-radius: 20px;
+  appearance: none;
+  margin-top: 7px
+}
+.tel-controls input[type=range]::-webkit-slider-thumb {
+  appearance: none;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: #edfaff;
+  border: 3px solid #75bfd9;
+  box-shadow: 0 0 0 3px #12263c
+}
+.tel-controls select {
+  padding: 10px 13px;
+  background: #152942;
+  color: #e4f1fb;
+  border: 1px solid #3e6485;
+  border-radius: 7px;
+  font: inherit
+}
+.tel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 24px;
+  background: #0d1829;
+  border-top: 1px solid #1e3852;
+  color: #99c9e7;
+  font-size: .75rem
+}
+.tel-warning {
+  color: #dfc59b;
+  text-align: right;
+  max-width: 620px
+}
+@keyframes telDrift {
+  to {
+    stroke-dashoffset: -88
+  }
+}
+@keyframes telPulse {
+  50% {
+    opacity: calc(var(--tel-light-opacity) * .55)
+  }
+}
+@media(max-width:750px) {
+  .tel-toolbar {
+    padding: 12px
+  }
+  .tel-kicker:last-child {
+    display: none
+  }
+  .tel-workspace svg {
+    min-width: 660px;
+    max-height: none
+  }
+  .tel-workspace {
+    overflow-x: auto
+  }
+  .tel-info {
+    position: sticky;
+    margin: 0 12px 12px;
+    bottom: 6px;
+    left: 12px;
+    max-width: none
+  }
+  .tel-controls {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px
+  }
+  .tel-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px
+  }
+  .tel-warning {
+    text-align: left
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .tel-app .tel-ray.shimmer,.tel-app #telImpact {
+    animation: none
+  }
+}
+/* 0.2c.1.1 – Esplorazione e narrazione laterale */
+.tel-main {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 270px;
+  background: #091625;
+  align-items: stretch
+}
+.tel-workspace {
+  min-width: 0;
+  display: flex;
+  align-items: center
+}
+.tel-workspace svg {
+  max-height: none
+}
+.tel-sidebar {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #101e32;
+  border-left: 1px solid #30445d
+}
+.tel-nav-heading {
+  font-size: .69rem;
+  letter-spacing: .16em;
+  color: #80b9d6;
+  font-weight: 750;
+  margin: 2px 6px 4px
+}
+.tel-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px
+}
+.tel-nav-button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  padding: 11px 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  color: #cfdef0;
+  text-align: left;
+  font: inherit;
+  font-size: .85rem;
+  cursor: pointer
+}
+.tel-nav-button:hover {
+  background: #1a324b
+}
+.tel-nav-button.tel-active {
+  background: #143652;
+  border-color: #4480a4;
+  color: #fff
+}
+.tel-nav-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 100%;
+  background: #5984a0;
+  flex: none
+}
+.tel-nav-button.tel-active .tel-nav-dot {
+  background: #66cbff;
+  box-shadow: 0 0 8px #66cbff
+}
+.tel-sidebar .tel-info {
+  position: static;
+  display: block;
+  max-width: none;
+  padding: 17px 13px;
+  margin-top: 8px;
+  border: 1px solid #36526b;
+  background: #091828;
+  border-radius: 9px;
+  flex: 1;
+  backdrop-filter: none
+}
+.tel-sidebar .tel-info h3 {
+  font-size: .99rem;
+  color: #f3f8ff;
+  margin: 0 0 10px;
+  font-weight: 650
+}
+.tel-sidebar .tel-info p {
+  font-size: .88rem;
+  color: #c7d9e8;
+  line-height: 1.65;
+  margin: 0
+}
+.tel-headings {
+  fill: #c0d8e9;
+  font-family: inherit;
+  font-size: calc(17px + 1.333333px);
+  font-weight: 700;
+  letter-spacing: 2.5px
+}
+.tel-app .tel-workspace #telImpact {
+  animation: none;
+  transform: none;
+  opacity: var(--tel-light-opacity)
+}
+.tel-impact-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: telEnergyExchange 2.4s ease-out infinite;
+  opacity: 0
+}
+.tel-impact-ring-b {
+  animation-delay: 1.2s
+}
+.tel-impact-sparks {
+  animation: telSpark 2.4s ease-in-out infinite
+}
+@keyframes telEnergyExchange {
+  0%,8% {
+    opacity: 0;
+    transform: scale(.3)
+  }
+  18% {
+    opacity: 1
+  }
+  66% {
+    opacity: .35;
+    transform: scale(4.6)
+  }
+  85%,100% {
+    opacity: 0;
+    transform: scale(5.1)
+  }
+}
+@keyframes telSpark {
+  0%,8%,70%,100% {
+    opacity: 0;
+    transform: scale(.65)
+  }
+  20%,35% {
+    opacity: 1;
+    transform: scale(1.25)
+  }
+  60% {
+    opacity: .3;
+    transform: scale(1.6)
+  }
+}
+.tel-footer {
+  justify-content: flex-start
+}
+.tel-warning {
+  text-align: left;
+  max-width: none
+}
+@media(max-width:950px) {
+  .tel-main {
+    grid-template-columns: minmax(0,1fr)
+  }
+  .tel-sidebar {
+    border-left: 0;
+    border-top: 1px solid #30445d
+  }
+  .tel-nav {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr))
+  }
+  .tel-sidebar .tel-info {
+    flex: auto
+  }
+  .tel-workspace svg {
+    width: 100%
+  }
+}
+@media(max-width:750px) {
+  .tel-nav {
+    grid-template-columns: repeat(2,minmax(0,1fr))
+  }
+  .tel-workspace {
+    display: block
+  }
+  .tel-workspace svg {
+    min-width: 660px
+  }
+  .tel-sidebar .tel-info {
+    margin: 0
+  }
+  .tel-nav-button {
+    font-size: .8rem
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .tel-impact-ring,.tel-impact-sparks {
+    animation: none
+  }
+  .tel-impact-ring {
+    opacity: .55
+  }
+}
+/* 0.2c.1.2: scelta iniziale, gerarchia, evidenziazione, scheda particella */
+.tel-app [hidden] {
+  display: none!important
+}
+.tel-switch,.tel-back-choices {
+  border: 1px solid #486785;
+  background: #122840;
+  color: #dceefa;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-size: .84rem
+}
+.tel-path-choice {
+  padding: 38px 28px 44px;
+  min-height: 410px;
+  background: radial-gradient(ellipse at 55% 0,#202744,#091729 70%);
+  text-align: center
+}
+.tel-path-choice h3 {
+  font-size: clamp(1.45rem,2.5vw,2.1rem);
+  margin: 14px 0 8px;
+  font-weight: 650;
+  color: #f5f9ff
+}
+.tel-path-choice>p {
+  color: #adc5d9;
+  margin: 0 0 32px;
+  font-size: calc(1rem + 1.333333px)
+}
+.tel-path-options {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 20px;
+  max-width: 780px;
+  margin: auto;
+  text-align: left
+}
+.tel-path-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 235px;
+  padding: 25px;
+  border: 1px solid #3e5974;
+  border-radius: 15px;
+  background: linear-gradient(140deg,#182f48,#101e33);
+  color: #f1f8ff;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: border-color .2s,transform .2s,background .2s
+}
+.tel-path-option:hover,.tel-path-option:focus-visible {
+  border-color: #93d0f8;
+  transform: translateY(-3px);
+  background: #1c3754
+}
+.tel-path-icon {
+  font-size: calc(2.7rem + 1.333333px);
+  color: #e7bc75;
+  line-height: 1
+}
+.tel-path-option:nth-child(2) .tel-path-icon {
+  color: #a6e1ff
+}
+.tel-path-option strong {
+  font-size: calc(1.18rem + 1.333333px)
+}
+.tel-path-option small {
+  color: #bdd0df;
+  font-size: .89rem;
+  line-height: 1.55
+}
+.tel-path-action {
+  margin-top: auto;
+  color: #a9dafa;
+  font-size: .84rem
+}
+.tel-neutrino-preview {
+  text-align: center;
+  padding: 70px 20px;
+  min-height: 400px;
+  background: radial-gradient(ellipse at 50% 10%,#1b3450,#091729 65%)
+}
+.tel-preview-symbol {
+  font-size: calc(5rem + 1.333333px);
+  color: #a5ddfc
+}
+.tel-neutrino-preview h3 {
+  font-size: calc(1.6rem + 1.333333px)
+}
+.tel-neutrino-preview p {
+  color: #b6cddd;
+  max-width: 520px;
+  margin: 12px auto 26px;
+  line-height: 1.65
+}
+.tel-headings {
+  font-family: inherit;
+  font-size: calc(21px + 1.333333px);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  fill: #f3f8ff
+}
+.tel-labels {
+  font-family: inherit;
+  font-size: calc(14px + 1.333333px);
+  letter-spacing: .6px;
+  font-weight: 520;
+  fill: #9fc1d9
+}
+.tel-workspace .tel-target,.tel-workspace .tel-source,.tel-workspace #telLight,.tel-workspace #telImpact,.tel-workspace #telExchange {
+  transition: opacity .32s ease,filter .32s ease
+}
+.tel-app[data-selected] .tel-workspace .tel-target,.tel-app[data-selected] .tel-workspace .tel-source {
+  opacity: .27
+}
+.tel-app[data-selected] .tel-workspace .tel-target.tel-active,.tel-app[data-selected] .tel-workspace .tel-source.tel-active {
+  opacity: 1;
+  filter: drop-shadow(0 0 7px #72caffaa)
+}
+.tel-app[data-selected="retina"] .tel-workspace .tel-target[data-part="eye"],.tel-app[data-selected="eye"] .tel-workspace .tel-target[data-part="eye"] {
+  opacity: 1
+}
+.tel-app[data-selected="safety"] .tel-workspace .tel-target[data-part="objective"] {
+  opacity: 1
+}
+.tel-app[data-selected="retina"] #telImpact,.tel-app[data-selected="retina"] #telExchange {
+  opacity: 1;
+  filter: drop-shadow(0 0 8px #ffd38e)
+}
+.tel-particle-tile {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  border: 1px solid #5b7d9a;
+  background: linear-gradient(125deg,#183b54,#0c2135);
+  border-radius: 9px;
+  padding: 12px;
+  color: #f0f8ff;
+  cursor: pointer;
+  font: inherit
+}
+.tel-particle-tile:hover {
+  border-color: #b3e4ff;
+  box-shadow: 0 0 15px #4ab8ef33
+}
+.tel-tile-symbol {
+  display: grid;
+  place-items: center;
+  font-size: calc(2rem + 1.333333px);
+  min-width: 57px;
+  height: 59px;
+  border: 1px solid #91c9ed;
+  border-radius: 6px;
+  color: #dcf2ff;
+  background: #154567
+}
+.tel-particle-tile strong,.tel-particle-tile small {
+  display: block
+}
+.tel-particle-tile strong {
+  font-size: calc(1rem + 1.333333px)
+}
+.tel-particle-tile small {
+  font-size: .79rem;
+  color: #9cc1dc;
+  margin-top: 5px
+}
+.tel-tile-arrow {
+  margin-left: auto;
+  font-size: calc(1.2rem + 1.333333px);
+  color: #9ccde9
+}
+.tel-photon-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 6000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: #020917db;
+  backdrop-filter: blur(6px)
+}
+.tel-photon-detail {
+  position: relative;
+  max-width: 530px;
+  width: 100%;
+  max-height: 85vh;
+  overflow: auto;
+  border: 1px solid #4e789a;
+  border-radius: 15px;
+  padding: 31px;
+  background: linear-gradient(145deg,#18324c,#09192b);
+  box-shadow: 0 25px 75px #0009
+}
+.tel-photon-close {
+  position: absolute;
+  right: 13px;
+  top: 9px;
+  font-size: calc(1.8rem + 1.333333px);
+  background: none;
+  border: 0;
+  color: #ecf5ff;
+  cursor: pointer
+}
+.tel-photon-mark {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #dcefff;
+  font-size: calc(3rem + 1.333333px);
+  line-height: 1
+}
+.tel-photon-mark span {
+  font-size: calc(1.3rem + 1.333333px)
+}
+.tel-photon-detail h3 {
+  font-size: calc(1.35rem + 1.333333px);
+  margin: 25px 0 20px
+}
+.tel-photon-detail p {
+  line-height: 1.6;
+  font-size: .95rem;
+  color: #d5e3f0
+}
+.tel-photon-detail p strong {
+  color: #fff
+}
+.tel-photon-family {
+  border-top: 1px solid #395675;
+  padding-top: 18px;
+  margin-top: 22px;
+  color: #99c9e7!important
+}
+@media(max-width:750px) {
+  .tel-path-options {
+    grid-template-columns: 1fr
+  }
+  .tel-path-choice {
+    padding: 25px 17px
+  }
+  .tel-path-option {
+    min-height: 180px
+  }
+  .tel-headings {
+    font-size: calc(19px + 1.333333px)
+  }
+  .tel-labels {
+    font-size: calc(14px + 1.333333px)
+  }
+}
+/* Safety net: native hidden takes priority even if modal display changes. */
+.tel-photon-modal[hidden] {
+  display: none!important
+}
+/* Coerenza tipografica anche all’interno del disegno SVG. */
+.tel-app svg text {
+  font-family: "IBM Plex Sans",system-ui,sans-serif
+}
+/* 0.2c.1.5: colori della famiglia dei bosoni (come il poster). */
+.tel-path-option:first-child .tel-path-icon {
+  color: #ef9e93
+}
+.tel-particle-tile {
+  border-color: #ab6263;
+  background: linear-gradient(125deg,#67353e,#321f31)
+}
+.tel-particle-tile:hover {
+  border-color: #f2aca3;
+  box-shadow: 0 0 15px #de767048
+}
+.tel-tile-symbol {
+  background: #874149;
+  border-color: #e69a8f;
+  color: #ffe6de
+}
+.tel-tile-arrow {
+  color: #f0aaa1
+}
+.tel-photon-mark {
+  color: #f5a6a0
+}
+.tel-photon-family {
+  color: #f2afa7!important;
+  border-color: #88515a
+}
+/* 0.2c.1.7 — resa convenzionale delle bande invisibili. */
+.tel-app[data-spectrum="uv"] .tel-ray.halo {
+  stroke: #b07aff;
+  stroke-width: 14;
+  opacity: calc(var(--tel-light-opacity) * .75);
+  filter: url(#telGlow)
+}
+.tel-app[data-spectrum="uv"] .tel-ray.fine {
+  stroke: #af79ec;
+  stroke-width: 4;
+  opacity: calc(var(--tel-light-opacity) * .34);
+  filter: url(#telGlow)
+}
+.tel-app[data-spectrum="uv"] .tel-ray.shimmer {
+  opacity: 0
+}
+.tel-app[data-spectrum="ir"] .tel-ray.halo {
+  opacity: 0
+}
+.tel-app[data-spectrum="ir"] .tel-ray.fine {
+  stroke: #ed7064;
+  stroke-width: 2.5;
+  stroke-dasharray: 10 10;
+  opacity: var(--tel-light-opacity)
+}
+.tel-app[data-spectrum="ir"] .tel-ray.shimmer {
+  opacity: 0
+}
+.tel-spectrum-note {
+  padding: 9px 24px 10px;
+  margin: 0;
+  color: #b9cde1;
+  background: #0d1b30;
+  font-size: calc(.83rem + 1.333333px);
+  line-height: 1.5;
+  border-top: 1px solid #263b53
+}
+/* Solo il blocco del simbolo γ riprende il rosso dei bosoni. */
+.tel-particle-tile {
+  background: #10243a;
+  border-color: #355673;
+  color: #e5f1fc
+}
+.tel-particle-tile:hover {
+  background: #17304b;
+  border-color: #7c9fbd;
+  box-shadow: 0 0 13px #5c97c02c
+}
+.tel-tile-symbol {
+  background: #874149;
+  border-color: #e69a8f;
+  color: #ffe6de
+}
+.tel-tile-arrow {
+  color: #a8c9e1
+}
+@media(max-width:750px) {
+  .tel-spectrum-note {
+    padding: 10px 16px
+  }
+}
+/* 0.2c.1.8 — percorso neutrini, isolato dal percorso Luce e fotoni */
+.tel-neutrino-journey {
+  background: #091425;
+  color: #e4effa
+}
+.nu-main {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) 270px
+}
+.nu-visual {
+  min-width: 0;
+  background: #091425;
+  position: relative
+}
+.nu-visual svg {
+  width: 100%;
+  height: auto;
+  display: block
+}
+.nu-visual svg text {
+  font-family: "IBM Plex Sans",sans-serif;
+  fill: #dbe9f5;
+  font-size: 17px
+}
+.nu-visual-caption {
+  padding: 8px 18px;
+  color: #92b5cb;
+  font-size: .8rem
+}
+.nu-sidebar {
+  padding: 18px 15px;
+  background: #101e32;
+  border-left: 1px solid #30445d;
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+.nu-nav {
+  display: grid;
+  gap: 7px
+}
+.nu-step {
+  font: inherit;
+  color: #ccdeec;
+  text-align: left;
+  background: #11263b;
+  border: 1px solid #344b62;
+  border-radius: 8px;
+  padding: 11px;
+  cursor: pointer
+}
+.nu-step:hover,.nu-step.nu-active {
+  background: #21445b;
+  border-color: #7bbbd8;
+  color: white
+}
+.nu-story {
+  border: 1px solid #344d64;
+  background: #091b2d;
+  padding: 15px;
+  border-radius: 9px;
+  line-height: 1.58;
+  flex: 1
+}
+.nu-story h3 {
+  margin: 0 0 8px;
+  font-size: 1.05rem
+}
+.nu-story p {
+  margin: 0;
+  font-size: .93rem;
+  color: #bdd2df
+}
+.nu-particle-tile,.nu-particle-tile:hover {
+  background: #10243a;
+  border-color: #49755e
+}
+.nu-particle-tile .tel-tile-symbol {
+  background: #347a57;
+  color: #e6ffec;
+  border-color: #80ba96
+}
+.nu-weak-tile,.nu-weak-tile:hover {
+  background: #10243a;
+  border-color: #885259
+}
+.nu-weak-tile .tel-tile-symbol {
+  background: #874149;
+  border-color: #e69a8f;
+  color: white;
+  font-size: 1.22rem
+}
+.nu-controls {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 17px 24px;
+  border-top: 1px solid #30445d
+}
+.nu-controls label {
+  font-size: .87rem;
+  color: #bdd3e4;
+  display: grid;
+  gap: 8px;
+  min-width: 170px
+}
+.nu-controls select,.nu-controls button {
+  font: inherit;
+  background: #17334c;
+  color: #ebf4fd;
+  border: 1px solid #57718b;
+  border-radius: 7px;
+  padding: 10px;
+  cursor: pointer
+}
+.nu-controls input {
+  accent-color: #89c2df
+}
+.nu-controls button:hover {
+  background: #24516a
+}
+.nu-disclaimer {
+  font-size: .8rem;
+  color: #adbecb;
+  padding: 0 24px 16px;
+  margin: 0
+}
+.nu-modal[hidden] {
+  display: none!important
+}
+.nu-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 6100;
+  background: #020817db;
+  display: grid;
+  place-items: center;
+  padding: 20px
+}
+.nu-modal-panel {
+  position: relative;
+  max-width: 540px;
+  width: 100%;
+  border-radius: 13px;
+  border: 1px solid #68839c;
+  background: linear-gradient(140deg,#173149,#0b192b);
+  padding: 28px;
+  box-shadow: 0 20px 70px #0009
+}
+.nu-modal-panel>button {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  background: none;
+  border: 0;
+  color: white;
+  font-size: 26px;
+  cursor: pointer
+}
+.nu-modal-symbol {
+  font-size: 2.9rem;
+  color: #94cba9
+}
+.nu-modal-panel h3 {
+  font-size: 1.5rem
+}
+.nu-modal-panel #nuDetailText {
+  line-height: 1.7;
+  color: #c9dce7
+}
+.tel-neutrino-journey[data-nu-selected="sun"] #nuMatterObject,.tel-neutrino-journey[data-nu-selected="sun"] #nuDetectorObject,.tel-neutrino-journey[data-nu-selected="matter"] #nuSunObject,.tel-neutrino-journey[data-nu-selected="matter"] #nuDetectorObject,.tel-neutrino-journey[data-nu-selected="detector"] #nuSunObject,.tel-neutrino-journey[data-nu-selected="detector"] #nuMatterObject,.tel-neutrino-journey[data-nu-selected="weak"] #nuSunObject,.tel-neutrino-journey[data-nu-selected="weak"] #nuMatterObject {
+  opacity: .3;
+  transition: opacity .3s
+}
+.tel-neutrino-journey[data-nu-selected="sun"] #nuSunObject,.tel-neutrino-journey[data-nu-selected="matter"] #nuMatterObject,.tel-neutrino-journey[data-nu-selected="detector"] #nuDetectorObject,.tel-neutrino-journey[data-nu-selected="weak"] #nuDetectorObject {
+  filter: drop-shadow(0 0 6px #8fd7ef44)
+}
+@media(max-width:920px) {
+  .nu-main {
+    grid-template-columns: 1fr
+  }
+  .nu-sidebar {
+    border-left: 0;
+    border-top: 1px solid #30445d
+  }
+  .nu-nav {
+    grid-template-columns: repeat(2,minmax(0,1fr))
+  }
+}
+@media(max-width:620px) {
+  .nu-visual {
+    overflow-x: auto
+  }
+  .nu-visual svg {
+    min-width: 620px
+  }
+  .nu-controls {
+    padding: 14px
+  }
+  .nu-nav {
+    grid-template-columns: 1fr
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .nu-visual #nuDustLayer {
+    opacity: .75
+  }
+}
+/* 0.2c.1.9 — fotografia e ingrandimento di IceCube */
+.nu-experiment {
+  display: grid;
+  gap: 5px
+}
+.nu-experiment[hidden],.nu-photo-modal[hidden] {
+  display: none!important
+}
+.nu-photo-trigger {
+  border: 1px solid #43677c;
+  border-radius: 9px;
+  overflow: hidden;
+  background: #102c43;
+  color: #d9ebf9;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font: inherit
+}
+.nu-photo-trigger img {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  display: block;
+  background: #19354c
+}
+.nu-photo-trigger span {
+  display: block;
+  padding: 7px 10px;
+  font-size: .85rem
+}
+.nu-experiment small {
+  font-size: .73rem;
+  color: #abc2d2
+}
+.nu-experiment a,.nu-photo-frame a {
+  color: #b2e6ff
+}
+.nu-photo-modal {
+  position: fixed;
+  z-index: 6400;
+  inset: 0;
+  background: #020914e8;
+  display: grid;
+  place-items: center;
+  padding: 16px
+}
+.nu-photo-frame {
+  position: relative;
+  max-width: 920px;
+  width: 100%;
+  background: #0e253a;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #63869d
+}
+.nu-photo-frame img {
+  max-width: 100%;
+  max-height: 75vh;
+  display: block;
+  margin: auto;
+  object-fit: contain
+}
+.nu-photo-frame p {
+  color: #c2dceb;
+  font-size: .83rem
+}
+.nu-photo-frame button {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  z-index: 1;
+  font-size: 28px;
+  color: white;
+  background: #10243a;
+  border: 1px solid #6797b3;
+  border-radius: 6px;
+  cursor: pointer
+}
+.nu-visual #nuDOMs circle {
+  transition: fill .16s
+}
+.nu-visual:has(#nuInteraction[opacity="1"]) #nuDOMs circle {
+  fill: #c1f0ff
+}
+/* 0.2c.1.10 — raffinamento grafico del percorso neutrini */
+.nu-main {
+  grid-template-columns: minmax(0,1fr) 290px
+}
+.nu-visual {
+  background: radial-gradient(circle at 18% 50%,#18314b 0,#0b1727 48%,#08111d 100%)
+}
+.nu-visual svg text {
+  font-size: 16px;
+  letter-spacing: .5px;
+  fill: #e4f1fb
+}
+.nu-visual-caption {
+  padding: 10px 18px 12px;
+  color: #9bbcd0;
+  font-size: .82rem;
+  border-top: 1px solid #1b3148;
+  background: #0b1624
+}
+.nu-sidebar {
+  background: linear-gradient(180deg,#101d31,#0c1524);
+  border-left: 1px solid #2a4158;
+  gap: 14px
+}
+.nu-step {
+  background: linear-gradient(180deg,#122940,#0f2034);
+  border-color: #37526a;
+  color: #d7e7f3;
+  padding: 12px 12px 13px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03)
+}
+.nu-step:hover,.nu-step.nu-active {
+  background: linear-gradient(180deg,#23516a,#17344a);
+  border-color: #7cc6ea;
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(152,220,255,.08),0 0 18px rgba(87,183,236,.12)
+}
+.nu-story {
+  background: linear-gradient(180deg,#0b192a,#0a1624);
+  border-color: #365067;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03)
+}
+.nu-story h3 {
+  font-size: 1.06rem;
+  color: #f4fbff
+}
+.nu-story p {
+  color: #c4d7e4;
+  line-height: 1.65
+}
+.nu-particle-tile,.nu-particle-tile:hover,.nu-weak-tile,.nu-weak-tile:hover {
+  background: #10243a
+}
+.nu-experiment {
+  gap: 8px
+}
+.nu-photo-trigger {
+  background: linear-gradient(180deg,#112a40,#0d2234);
+  border: 1px solid #4e7088;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18)
+}
+.nu-photo-trigger:hover {
+  border-color: #91c9ec;
+  box-shadow: 0 8px 24px rgba(58,159,221,.18)
+}
+.nu-photo-trigger img {
+  height: 112px;
+  background: #0d2134
+}
+.nu-photo-trigger span {
+  font-size: .88rem;
+  padding: 8px 11px;
+  color: #eaf6ff
+}
+.nu-experiment small {
+  line-height: 1.45
+}
+.nu-photo-frame {
+  background: linear-gradient(180deg,#0f263b,#0b1a2a);
+  border-color: #688ba4;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45)
+}
+.nu-photo-frame p {
+  line-height: 1.5
+}
+.nu-disclaimer {
+  color: #b6c6d2;
+  padding: 0 24px 18px
+}
+.tel-neutrino-journey[data-nu-selected="sun"] #nuSunObject,.tel-neutrino-journey[data-nu-selected="matter"] #nuMatterObject,.tel-neutrino-journey[data-nu-selected="detector"] #nuDetectorObject,.tel-neutrino-journey[data-nu-selected="weak"] #nuDetectorObject {
+  filter: drop-shadow(0 0 10px rgba(143,215,239,.32))
+}
+#nuDustLayer rect {
+  shape-rendering: crispEdges
+}
+@media(max-width:920px) {
+  .nu-main {
+    grid-template-columns: 1fr
+  }
+}
+/* 0.2c.1.11 — raffinamento percorso neutrini */
+.nu-main {
+  grid-template-columns: minmax(0,1fr) 300px
+}
+.nu-visual {
+  background: radial-gradient(circle at 14% 50%,#183251 0,#0b1828 45%,#08111d 100%)
+}
+.nu-visual svg {
+  display: block;
+  width: 100%;
+  height: auto
+}
+.nu-visual svg text {
+  font-size: 16px;
+  letter-spacing: .65px;
+  fill: #edf6fc;
+  font-weight: 600
+}
+.nu-visual-caption {
+  padding: 10px 18px 12px;
+  color: #a7c2d5;
+  font-size: .83rem;
+  border-top: 1px solid #1d344b;
+  background: #0c1726
+}
+.nu-sidebar {
+  background: linear-gradient(180deg,#101d31,#0c1524);
+  border-left: 1px solid #2a4158;
+  gap: 14px
+}
+.nu-step {
+  background: linear-gradient(180deg,#122940,#0f2034);
+  border-color: #37526a;
+  color: #d7e7f3;
+  padding: 12px 12px 13px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03)
+}
+.nu-step:hover,.nu-step.nu-active {
+  background: linear-gradient(180deg,#23516a,#17344a);
+  border-color: #7cc6ea;
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(152,220,255,.08),0 0 18px rgba(87,183,236,.12)
+}
+.nu-story {
+  background: linear-gradient(180deg,#0b192a,#0a1624);
+  border-color: #365067;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03)
+}
+.nu-story h3 {
+  font-size: 1.06rem;
+  color: #f4fbff
+}
+.nu-story p {
+  color: #c4d7e4;
+  line-height: 1.65
+}
+.nu-particle-tile,.nu-particle-tile:hover,.nu-weak-tile,.nu-weak-tile:hover {
+  background: #10243a
+}
+.nu-experiment {
+  gap: 8px
+}
+.nu-photo-trigger {
+  background: linear-gradient(180deg,#112a40,#0d2234);
+  border: 1px solid #4e7088;
+  box-shadow: 0 6px 18px rgba(0,0,0,.18)
+}
+.nu-photo-trigger:hover {
+  border-color: #91c9ec;
+  box-shadow: 0 8px 24px rgba(58,159,221,.18)
+}
+.nu-photo-trigger img {
+  height: 112px;
+  background: #0d2134
+}
+.nu-photo-trigger span {
+  font-size: .88rem;
+  padding: 8px 11px;
+  color: #eaf6ff
+}
+.nu-experiment small {
+  line-height: 1.45
+}
+.nu-photo-frame {
+  background: linear-gradient(180deg,#0f263b,#0b1a2a);
+  border-color: #688ba4;
+  box-shadow: 0 24px 70px rgba(0,0,0,.45)
+}
+.nu-photo-frame p {
+  line-height: 1.5
+}
+.nu-disclaimer {
+  color: #b6c6d2;
+  padding: 0 24px 18px
+}
+.tel-neutrino-journey[data-nu-selected="sun"] #nuSunObject,.tel-neutrino-journey[data-nu-selected="matter"] #nuMatterObject,.tel-neutrino-journey[data-nu-selected="detector"] #nuDetectorObject,.tel-neutrino-journey[data-nu-selected="weak"] #nuDetectorObject {
+  filter: drop-shadow(0 0 11px rgba(154,222,245,.28))
+}
+#nuDustLayer rect {
+  shape-rendering: crispEdges
+}
+@media(max-width:920px) {
+  .nu-main {
+    grid-template-columns: 1fr
+  }
+}
+/* v0.2c.1.12 neutrini: maggiore contrasto e sagoma anatomica neutra */
+#nuMatterObject path {
+  filter: drop-shadow(0 0 8px rgba(220,242,255,.18))
+}
+#nuDustLayer rect {
+  shape-rendering: auto
+}
+.nu-visual svg text {
+  fill: #e6f1fb!important
+}
+/* 0.2c.1.13 — pannello inferiore con micro-simulazioni neutrini */
+.nu-lab {
+  border-top: 1px solid #1c3448;
+  background: linear-gradient(180deg,#071323 0,#09192b 100%);
+  padding: 16px 20px 20px
+}
+.nu-lab-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: end;
+  margin-bottom: 14px
+}
+.nu-lab-subtitle {
+  font-size: .84rem;
+  color: #9ab6ca
+}
+.nu-lab-panels {
+  position: relative;
+  min-height: 290px
+}
+.nu-panel {
+  display: none;
+  grid-template-columns: minmax(0,1.15fr) minmax(280px,.85fr);
+  gap: 20px;
+  align-items: stretch
+}
+.tel-neutrino-journey[data-nu-selected="sun"] .nu-panel[data-panel="sun"],.tel-neutrino-journey[data-nu-selected="matter"] .nu-panel[data-panel="matter"],.tel-neutrino-journey[data-nu-selected="detector"] .nu-panel[data-panel="detector"],.tel-neutrino-journey[data-nu-selected="weak"] .nu-panel[data-panel="weak"] {
+  display: grid
+}
+.nu-panel-copy {
+  border: 1px solid #294962;
+  border-radius: 14px;
+  background: linear-gradient(180deg,#0d2135,#0b1a2a);
+  padding: 18px 18px 16px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03)
+}
+.nu-panel-copy h4 {
+  margin: 0 0 10px;
+  color: #f4fbff;
+  font-size: 1.08rem
+}
+.nu-panel-copy p {
+  margin: 0 0 12px;
+  color: #c5d9e7;
+  line-height: 1.65
+}
+.nu-panel-copy ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #9fc0d7;
+  line-height: 1.55;
+  font-size: .92rem
+}
+.nu-mini-stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  border-radius: 16px;
+  border: 1px solid #29455a;
+  background: radial-gradient(circle at 22% 28%,rgba(35,76,114,.45),transparent 42%),linear-gradient(180deg,#091628,#07111d);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.02)
+}
+.nu-mini-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,rgba(255,255,255,.02),transparent 35%,rgba(255,255,255,.03));
+}
+/* fusion */
+.nu-fusion-core {
+  position: absolute;
+  left: 34%;
+  top: 50%;
+  width: 112px;
+  height: 112px;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle,#fff7ce 0,#ffd267 30%,rgba(255,181,79,.55) 54%,rgba(255,171,70,0) 75%);
+  animation: nuPulseCore 2.9s ease-in-out infinite
+}
+.nu-f-proton,.nu-f-helium,.nu-f-neutrino {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  border-radius: 999px
+}
+.nu-f-proton {
+  width: 38px;
+  height: 38px;
+  background: #58b6ff;
+  color: #eefdff;
+  box-shadow: 0 0 14px rgba(88,182,255,.35)
+}
+.nu-f-helium {
+  width: 56px;
+  height: 56px;
+  left: 31.5%;
+  top: 41%;
+  background: #ffaf55;
+  color: #351700;
+  box-shadow: 0 0 18px rgba(255,175,85,.42);
+  animation: nuHeliumBlink 2.9s ease-in-out infinite
+}
+.nu-f-neutrino {
+  width: 28px;
+  height: 28px;
+  background: #f2fbff;
+  color: #11304d;
+  box-shadow: 0 0 10px rgba(242,251,255,.3)
+}
+.nu-f-proton.p1 {
+  left: 10%;
+  top: 25%;
+  animation: nuFuseP1 2.9s linear infinite
+}
+.nu-f-proton.p2 {
+  left: 10%;
+  top: 64%;
+  animation: nuFuseP2 2.9s linear infinite
+}
+.nu-f-proton.p3 {
+  left: 58%;
+  top: 20%;
+  animation: nuFuseP3 2.9s linear infinite
+}
+.nu-f-proton.p4 {
+  left: 58%;
+  top: 69%;
+  animation: nuFuseP4 2.9s linear infinite
+}
+.nu-f-neutrino.n1 {
+  left: 41%;
+  top: 27%;
+  animation: nuOut1 2.9s linear infinite
+}
+.nu-f-neutrino.n2 {
+  left: 42%;
+  top: 55%;
+  animation: nuOut2 2.9s linear infinite
+}
+.nu-f-energy {
+  position: absolute;
+  width: 140px;
+  height: 4px;
+  border-radius: 99px;
+  background: linear-gradient(90deg,rgba(255,230,164,0),rgba(255,230,164,.95),rgba(255,230,164,0));
+  box-shadow: 0 0 10px rgba(255,230,164,.28);
+  left: 40%;
+  top: 49%
+}
+.nu-f-energy.e1 {
+  transform: rotate(-17deg);
+  animation: nuBeam1 2.9s linear infinite
+}
+.nu-f-energy.e2 {
+  transform: rotate(24deg);
+  animation: nuBeam2 2.9s linear infinite
+}
+/* matter */
+.nu-mini-stage--matter {
+  background: radial-gradient(circle at 15% 22%,rgba(34,86,122,.38),transparent 36%),linear-gradient(180deg,#081728,#091521 100%)
+}
+.nu-matter-body {
+  position: absolute;
+  left: 44%;
+  top: 18%;
+  width: 120px;
+  height: 170px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg,rgba(222,234,242,.9),rgba(183,202,214,.82));
+  clip-path: path('M60 0 C75 0 86 12 86 28 C86 39 79 49 70 54 L70 70 C86 77 99 88 104 105 L114 150 C117 164 108 174 97 174 C88 174 82 169 79 159 L72 129 L68 129 L70 216 C70 233 63 244 50 244 C37 244 30 233 30 216 L32 129 L28 129 L21 159 C18 169 12 174 3 174 C-8 174 -17 164 -14 150 L-4 105 C1 88 14 77 30 70 L30 54 C21 49 14 39 14 28 C14 12 25 0 40 0 Z');
+  opacity: .86;
+  box-shadow: 0 0 30px rgba(227,243,252,.08)
+}
+.nu-matter-body span {
+  position: absolute;
+  left: 50%;
+  bottom: -34px;
+  transform: translateX(-50%);
+  font-size: .83rem;
+  letter-spacing: .1em;
+  font-weight: 700;
+  color: #d6e7f3
+}
+.nu-matter-tracks span {
+  position: absolute;
+  left: -18%;
+  width: 15px;
+  height: 1.8px;
+  border-radius: 50px;
+  background: linear-gradient(90deg,rgba(255,255,255,0),rgba(245,251,255,.95),rgba(255,255,255,0));
+  box-shadow: 0 0 8px rgba(255,255,255,.18);
+  animation: nuMatterTrack 3.8s linear infinite
+}
+/* detector */
+.nu-detector-box {
+  position: absolute;
+  right: 12%;
+  top: 11%;
+  width: 240px;
+  height: 180px;
+  border: 1px solid rgba(148,199,227,.28);
+  background: linear-gradient(180deg,rgba(28,66,96,.28),rgba(15,28,45,.18));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02)
+}
+.nu-detector-box::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: -18px;
+  top: -18px;
+  bottom: 18px;
+  border: 1px solid rgba(127,181,212,.14);
+  transform: skewY(0) translate(14px,-10px)
+}
+.nu-detector-track {
+  position: absolute;
+  left: -10%;
+  top: 54%;
+  width: 48%;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,rgba(245,251,255,.95),transparent);
+  box-shadow: 0 0 8px rgba(245,251,255,.22);
+  animation: nuDetectorTrack 4.2s linear infinite
+}
+.nu-detector-string {
+  position: absolute;
+  top: 18px;
+  bottom: 14px;
+  width: 2px;
+  background: linear-gradient(180deg,rgba(160,219,248,.55),rgba(160,219,248,.15))
+}
+.nu-detector-string.s1 {
+  left: 48px
+}
+.nu-detector-string.s2 {
+  left: 92px
+}
+.nu-detector-string.s3 {
+  left: 136px
+}
+.nu-detector-string.s4 {
+  left: 180px
+}
+.nu-detector-dom {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8ed1f1;
+  box-shadow: 0 0 10px rgba(142,209,241,.15)
+}
+.nu-detector-dom.d1 {
+  left: 43px;
+  top: 34px
+}
+.nu-detector-dom.d2 {
+  left: 43px;
+  top: 90px
+}
+.nu-detector-dom.d3 {
+  left: 87px;
+  top: 60px
+}
+.nu-detector-dom.d4 {
+  left: 87px;
+  top: 128px
+}
+.nu-detector-dom.d5 {
+  left: 131px;
+  top: 48px
+}
+.nu-detector-dom.d6 {
+  left: 131px;
+  top: 112px
+}
+.nu-detector-dom.d7 {
+  left: 175px;
+  top: 76px
+}
+.nu-detector-dom.d8 {
+  left: 175px;
+  top: 140px
+}
+.nu-detector-flash {
+  position: absolute;
+  left: 116px;
+  top: 78px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle,#fffde0 0,#8fe6ff 35%,rgba(116,202,247,0) 72%);
+  animation: nuDetectorFlash 4.2s ease-in-out infinite
+}
+.nu-detector-wave {
+  position: absolute;
+  left: 104px;
+  top: 66px;
+  border-radius: 50%;
+  border: 2px solid rgba(198,241,255,.65);
+  animation: nuDetectorWave 4.2s ease-out infinite
+}
+.nu-detector-wave.w1 {
+  width: 58px;
+  height: 58px
+}
+.nu-detector-wave.w2 {
+  width: 88px;
+  height: 88px;
+  left: 89px;
+  top: 51px;
+  animation-delay: .18s
+}
+/* weak */
+.nu-mini-stage--weak {
+  background: radial-gradient(circle at 50% 50%,rgba(40,92,128,.18),transparent 45%),linear-gradient(180deg,#091525,#08111c)
+}
+.nu-weak-left,.nu-weak-right,.nu-weak-exchange {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-weight: 700
+}
+.nu-weak-left {
+  left: 18%;
+  top: 40%;
+  width: 58px;
+  height: 58px;
+  background: #edf9ff;
+  color: #14324c;
+  box-shadow: 0 0 16px rgba(237,249,255,.26);
+  animation: nuWeakLeft 3.6s ease-in-out infinite
+}
+.nu-weak-right {
+  right: 18%;
+  top: 40%;
+  width: 58px;
+  height: 58px;
+  background: #d3ecf8;
+  color: #14324c;
+  box-shadow: 0 0 16px rgba(211,236,248,.18)
+}
+.nu-weak-exchange {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(180deg,#b54a55,#7e2933);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(181,74,85,.2);
+  opacity: 0
+}
+.nu-weak-exchange.w {
+  background: linear-gradient(180deg,#4b88bc,#275072);
+  animation: nuWeakW 3.6s ease-in-out infinite
+}
+.nu-weak-exchange.z {
+  animation: nuWeakZ 3.6s ease-in-out infinite
+}
+.nu-weak-link {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg,rgba(194,235,255,0),rgba(194,235,255,.9),rgba(194,235,255,0));
+  opacity: 0
+}
+.nu-weak-link.l1,.nu-weak-link.l2 {
+  left: 30%;
+  top: 51%;
+  width: 22%
+}
+.nu-weak-link.l3,.nu-weak-link.l4 {
+  right: 30%;
+  top: 51%;
+  width: 22%
+}
+.nu-weak-link.l1 {
+  animation: nuWeakLink 3.6s ease-in-out infinite
+}
+.nu-weak-link.l2 {
+  top: 46%;
+  animation: nuWeakLink 3.6s ease-in-out infinite .16s
+}
+.nu-weak-link.l3 {
+  animation: nuWeakLink 3.6s ease-in-out infinite .08s
+}
+.nu-weak-link.l4 {
+  top: 56%;
+  animation: nuWeakLink 3.6s ease-in-out infinite .22s
+}
+.nu-weak-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 130px;
+  height: 130px;
+  transform: translate(-50%,-50%);
+  background: radial-gradient(circle,rgba(229,248,255,.22),rgba(229,248,255,0) 70%);
+  animation: nuWeakBurst 3.6s ease-in-out infinite
+}
+@keyframes nuPulseCore {
+  0%,100% {
+    transform: translate(-50%,-50%) scale(.82);
+    opacity: .75
+  }
+  18%,34% {
+    transform: translate(-50%,-50%) scale(1.08);
+    opacity: 1
+  }
+  55% {
+    transform: translate(-50%,-50%) scale(.88);
+    opacity: .8
+  }
+}
+@keyframes nuFuseP1 {
+  0% {
+    transform: translate(0,0)
+  }
+  20% {
+    transform: translate(58px,42px)
+  }
+  28% {
+    opacity: 1
+  }
+  32% {
+    opacity: .15
+  }
+  100% {
+    transform: translate(58px,42px);
+    opacity: .15
+  }
+}
+@keyframes nuFuseP2 {
+  0% {
+    transform: translate(0,0)
+  }
+  20% {
+    transform: translate(58px,-38px)
+  }
+  28% {
+    opacity: 1
+  }
+  32% {
+    opacity: .15
+  }
+  100% {
+    transform: translate(58px,-38px);
+    opacity: .15
+  }
+}
+@keyframes nuFuseP3 {
+  0% {
+    transform: translate(0,0)
+  }
+  20% {
+    transform: translate(-74px,54px)
+  }
+  28% {
+    opacity: 1
+  }
+  32% {
+    opacity: .15
+  }
+  100% {
+    transform: translate(-74px,54px);
+    opacity: .15
+  }
+}
+@keyframes nuFuseP4 {
+  0% {
+    transform: translate(0,0)
+  }
+  20% {
+    transform: translate(-74px,-52px)
+  }
+  28% {
+    opacity: 1
+  }
+  32% {
+    opacity: .15
+  }
+  100% {
+    transform: translate(-74px,-52px);
+    opacity: .15
+  }
+}
+@keyframes nuHeliumBlink {
+  0%,22%,100% {
+    opacity: .08;
+    transform: scale(.84)
+  }
+  28%,62% {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+@keyframes nuOut1 {
+  0%,28% {
+    transform: translate(0,0) scale(.2);
+    opacity: 0
+  }
+  36% {
+    opacity: 1
+  }
+  100% {
+    transform: translate(220px,-92px) scale(1);
+    opacity: 0
+  }
+}
+@keyframes nuOut2 {
+  0%,28% {
+    transform: translate(0,0) scale(.2);
+    opacity: 0
+  }
+  36% {
+    opacity: 1
+  }
+  100% {
+    transform: translate(260px,92px) scale(1);
+    opacity: 0
+  }
+}
+@keyframes nuBeam1 {
+  0%,26% {
+    opacity: 0
+  }
+  34%,58% {
+    opacity: 1
+  }
+  100% {
+    transform: translate(170px,-38px) rotate(-17deg);
+    opacity: 0
+  }
+}
+@keyframes nuBeam2 {
+  0%,26% {
+    opacity: 0
+  }
+  34%,58% {
+    opacity: 1
+  }
+  100% {
+    transform: translate(155px,48px) rotate(24deg);
+    opacity: 0
+  }
+}
+@keyframes nuMatterTrack {
+  0% {
+    transform: translateX(0);
+    opacity: 0
+  }
+  8% {
+    opacity: .9
+  }
+  78% {
+    opacity: .9
+  }
+  100% {
+    transform: translateX(128%);
+    opacity: 0
+  }
+}
+@keyframes nuDetectorTrack {
+  0% {
+    transform: translateX(0);
+    opacity: 0
+  }
+  12% {
+    opacity: .9
+  }
+  70% {
+    opacity: .9
+  }
+  100% {
+    transform: translateX(175%);
+    opacity: 0
+  }
+}
+@keyframes nuDetectorFlash {
+  0%,34%,100% {
+    opacity: 0;
+    transform: scale(.45)
+  }
+  40%,58% {
+    opacity: 1;
+    transform: scale(1)
+  }
+}
+@keyframes nuDetectorWave {
+  0%,36% {
+    opacity: 0;
+    transform: scale(.35)
+  }
+  44% {
+    opacity: .92
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25)
+  }
+}
+@keyframes nuWeakLeft {
+  0%,100% {
+    transform: translateX(0)
+  }
+  25% {
+    transform: translateX(42px)
+  }
+  40% {
+    transform: translateX(42px);
+    opacity: 1
+  }
+  52% {
+    transform: translateX(42px);
+    opacity: .3
+  }
+  70% {
+    transform: translateX(0);
+    opacity: 1
+  }
+}
+@keyframes nuWeakZ {
+  0%,28%,100% {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(.35)
+  }
+  36%,54% {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1)
+  }
+}
+@keyframes nuWeakW {
+  0%,48%,100% {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(.35)
+  }
+  58%,78% {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1)
+  }
+}
+@keyframes nuWeakLink {
+  0%,24%,100% {
+    opacity: 0
+  }
+  34%,72% {
+    opacity: 1
+  }
+}
+@keyframes nuWeakBurst {
+  0%,28%,100% {
+    opacity: 0;
+    transform: translate(-50%,-50%) scale(.4)
+  }
+  38%,60% {
+    opacity: 1;
+    transform: translate(-50%,-50%) scale(1)
+  }
+}
+@media(max-width:920px) {
+  .nu-panel {
+    grid-template-columns: 1fr
+  }
+  .nu-lab-panels {
+    min-height: unset
+  }
+  .nu-mini-stage {
+    min-height: 220px
+  }
+  .nu-lab-header {
+    display: block
+  }
+  .nu-lab-subtitle {
+    margin-top: 4px
+  }
+}
+/* 0.2c.1.14 — dettaglio sotto la simulazione principale, a sinistra del menu */
+.nu-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column
+}
+.nu-lab {
+  margin-top: 0;
+  border-top: 1px solid #1c3448;
+  border-right: 1px solid #24384d
+}
+.nu-lab-header {
+  padding-top: 0
+}
+.nu-main {
+  align-items: start
+}
+.nu-sidebar {
+  align-self: stretch
+}
+.nu-lab-panels {
+  min-height: 260px
+}
+.nu-panel {
+  grid-template-columns: minmax(0,1fr) minmax(240px,.82fr)
+}
+@media(max-width:920px) {
+  .nu-left {
+    order: 1
+  }
+  .nu-sidebar {
+    order: 2
+  }
+  .nu-lab {
+    border-right: 0
+  }
+  .nu-panel {
+    grid-template-columns: 1fr
+  }
+}
+/* 0.2c.1.15 — dettaglio 2: un neutrino ingrandito attraversa gli atomi */
+.nu-micro-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block
+}
+.nu-micro-neutrino {
+  animation: nuMicroPass 4.2s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(232,248,255,.65))
+}
+@keyframes nuMicroPass {
+  from {
+    transform: translate(-26px,134px)
+  }
+  to {
+    transform: translate(628px,134px)
+  }
+}
+@media(prefers-reduced-motion:reduce) {
+  .nu-micro-neutrino {
+    animation-duration: 12s
+  }
+}
+/* Uniformità colori delle tile: riferimento alla tavola del Modello Standard. */
+.tel-particle-tile .tel-tile-symbol,.nu-particle-tile .tel-tile-symbol {
+  background: #396e4e;
+  border-color: #9ad6a4
+}
+#telPhotonTile .tel-tile-symbol,#nuWeakTile .tel-tile-symbol {
+  background: #8b4850;
+  border-color: #e3a1a2
+}
+#nuDetailSymbol[data-type="neutrino"] {
+  color: #9ad6a4
+}
+#nuDetailSymbol[data-type="weak"] {
+  color: #e3a1a2
+}
+/* 0.2c.9.12 — Area grafica e controlli indipendenti dall’altezza dei toggle. */
+#telLightJourney .tel-main {
+  align-items: start
+}
+#telLightJourney .tel-left {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  align-self: start
+}
+#telLightJourney .tel-workspace {
+  align-items: flex-start;
+  flex: 0 0 auto
+}
+#telLightJourney .tel-workspace svg {
+  flex: 0 0 auto
+}
+#telLightJourney .tel-sidebar {
+  align-self: start
+}
+/* 0.2c.9.14 — navigazione delle tappe sopra la simulazione di dettaglio */
+.tel-neutrino-journey .nu-detail-navigation {
+  padding: 14px 20px 0;
+  background: #091425;
+  border-top: 1px solid #1c3448
+}
+.tel-neutrino-journey .nu-detail-navigation .tel-nav-heading {
+  margin: 0 0 12px;
+  color: #83c8ef
+}
+.tel-neutrino-journey .nu-detail-navigation .nu-nav {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  gap: 12px
+}
+.tel-neutrino-journey .nu-detail-navigation .nu-step {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  min-width: 0;
+  border-radius: 14px;
+  padding: 13px 14px;
+  line-height: 1.3
+}
+.tel-neutrino-journey .nu-detail-navigation .nu-step::before {
+  content: attr(data-step-number);
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  display: grid;
+  place-items: center;
+  background: #0d1d2c;
+  border: 1px solid #4c87b4;
+  border-radius: 50%;
+  color: #d6ebfb;
+  font-weight: 700
+}
+.tel-neutrino-journey .nu-lab {
+  border-right: 0;
+  padding-top: 0
+}
+@media(max-width:820px) {
+  .tel-neutrino-journey .nu-detail-navigation .nu-nav {
+    grid-template-columns: repeat(2,minmax(0,1fr))
+  }
+}
+@media(max-width:470px) {
+  .tel-neutrino-journey .nu-detail-navigation {
+    padding: 12px 12px 0
+  }
+  .tel-neutrino-journey .nu-detail-navigation .nu-nav {
+    gap: 8px
+  }
+  .tel-neutrino-journey .nu-detail-navigation .nu-step {
+    padding: 10px;
+    gap: 7px;
+    font-size: .85rem
+  }
+}
+/* 0.2c.9.15 — composizione neutrini: visualizzazione intera, tile alla fine */
+.tel-neutrino-journey .nu-main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch
+}
+.tel-neutrino-journey .nu-left {
+  width: 100%;
+  min-width: 0;
+  display: block
+}
+.tel-neutrino-journey .nu-visual {
+  width: 100%;
+  min-width: 0
+}
+.tel-neutrino-journey .nu-visual svg {
+  display: block;
+  width: 100%;
+  height: auto
+}
+.tel-neutrino-journey .nu-sidebar {
+  width: 100%;
+  align-self: auto;
+  border-left: 0;
+  border-top: 1px solid #2a4158;
+  padding: 18px 22px
+}
+.tel-neutrino-journey .nu-story {
+  flex: initial
+}
+.tel-neutrino-journey .nu-detail-navigation {
+  padding-bottom: 20px
+}
+.tel-neutrino-journey .nu-final-tiles {
+  display: grid;
+  gap: 12px;
+  padding: 8px 20px 22px
+}
+.tel-neutrino-journey .nu-final-tiles .tel-particle-tile {
+  width: 100%
+}
+@media(max-width:620px) {
+  .tel-neutrino-journey .nu-final-tiles {
+    padding: 8px 14px 18px
+  }
+}
+/* 0.2c.9.16 — Luce e fotoni: visualizzazione a tutta larghezza, selettori sotto. */
+#telLightJourney .tel-main {
+  display: block;
+  width: 100%
+}
+#telLightJourney .tel-left {
+  width: 100%;
+  display: block
+}
+#telLightJourney .tel-workspace {
+  width: 100%;
+  display: block
+}
+#telLightJourney .tel-workspace svg {
+  width: 100%;
+  min-width: 0;
+  max-height: none;
+  height: auto;
+  display: block
+}
+#telLightJourney .tel-light-navigation {
+  padding: 20px 24px 24px;
+  background: #091425;
+  border-top: 1px solid #1c3448
+}
+#telLightJourney .tel-light-navigation .tel-nav-heading {
+  margin: 0 0 12px;
+  color: #83c8ef
+}
+#telLightJourney .tel-light-navigation .tel-nav {
+  display: grid;
+  grid-template-columns: repeat(6,minmax(0,1fr));
+  gap: 10px
+}
+#telLightJourney .tel-light-navigation .tel-nav-button {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 12px 10px;
+  background: #13283c;
+  border: 1px solid #285273;
+  border-radius: 14px;
+  text-align: left;
+  color: #eef6fc;
+  line-height: 1.3;
+  position: static
+}
+#telLightJourney .tel-light-navigation .tel-nav-button:hover {
+  background: #17314a;
+  border-color: #5eb0eb
+}
+#telLightJourney .tel-light-navigation .tel-nav-button.active {
+  background: #214a6a;
+  border-color: #7accff;
+  border-radius: 14px;
+  box-shadow: 0 0 0 1px rgba(126,203,255,.2) inset
+}
+#telLightJourney .tel-light-navigation .tel-nav-dot {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #0d1d2c;
+  border: 1px solid #4c87b4;
+  color: #d6ebfb;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: none
+}
+#telLightJourney .tel-light-navigation .tel-nav-label {
+  flex: 1;
+  min-width: 0;
+  font-size: .9rem
+}
+#telLightJourney .tel-light-navigation #telInfo {
+  position: static;
+  display: block;
+  max-width: none;
+  margin: 18px 0 16px;
+  padding: 20px 24px;
+  background: #102338;
+  border: 1px solid #36526b;
+  border-radius: 14px;
+  backdrop-filter: none
+}
+#telLightJourney .tel-light-navigation #telInfo h3 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  color: #f3f8ff
+}
+#telLightJourney .tel-light-navigation #telInfo p {
+  margin: 0;
+  color: #c7d9e8;
+  line-height: 1.65;
+  font-size: 1rem
+}
+#telLightJourney .tel-light-navigation #telPhotonTile {
+  width: 100%
+}
+@media(max-width:1100px) {
+  #telLightJourney .tel-light-navigation .tel-nav {
+    grid-template-columns: repeat(3,minmax(0,1fr))
+  }
+}
+@media(max-width:650px) {
+  #telLightJourney .tel-light-navigation {
+    padding: 14px 12px 18px
+  }
+  #telLightJourney .tel-light-navigation .tel-nav {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 8px
+  }
+  #telLightJourney .tel-workspace {
+    overflow-x: auto
+  }
+  #telLightJourney .tel-workspace svg {
+    min-width: 660px
+  }
+  #telLightJourney .tel-light-navigation #telInfo {
+    padding: 16px
+  }
+}
+/* 0.2c.9.17 — allineamento navigazione Luce e fotoni ai pulsanti Neutrini.
+   Il numero è già presente nel cerchio HTML: sopprime solo il contatore CSS duplicato. */
+#telLightJourney .tel-light-navigation .tel-nav-dot::after {
+  content: none
+}
+#telLightJourney .tel-light-navigation .tel-nav-label {
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: inherit
+}
+/* 0.2c.9.18 — IceCube a fianco del testo «Come si rilevano?».
+   Le altre tappe e la logica di apertura restano invariate. */
+.tel-neutrino-journey[data-nu-selected="detector"] .nu-sidebar {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(230px,.48fr);
+  align-items: stretch;
+  gap: 16px;
+}
+.tel-neutrino-journey[data-nu-selected="detector"] .nu-story {
+  min-width: 0
+}
+.tel-neutrino-journey[data-nu-selected="detector"] .nu-experiment {
+  min-width: 0;
+  align-content: start
+}
+.tel-neutrino-journey[data-nu-selected="detector"] .nu-photo-trigger img {
+  height: 150px
+}
+@media(max-width:700px) {
+  .tel-neutrino-journey[data-nu-selected="detector"] .nu-sidebar {
+    grid-template-columns: 1fr
+  }
+}
+/* 0.2c.9.19 — un testo per tappa; IceCube a larghezza intera sotto il pannello 3. */
+.tel-neutrino-journey .nu-main {
+  display: block
+}
+.tel-neutrino-journey .nu-panel[data-panel="detector"] .nu-experiment {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 10px;
+  margin-top: 4px;
+  min-width: 0
+}
+.tel-neutrino-journey .nu-panel[data-panel="detector"] .nu-experiment[hidden] {
+  display: none!important
+}
+.tel-neutrino-journey .nu-panel[data-panel="detector"] .nu-photo-trigger {
+  width: 100%;
+  display: block
+}
+.tel-neutrino-journey .nu-panel[data-panel="detector"] .nu-photo-trigger img {
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: contain;
+  background: #0d2134
+}
+.tel-neutrino-journey .nu-panel[data-panel="detector"] .nu-experiment small {
+  display: block;
+  font-size: .83rem;
+  line-height: 1.45
+}
