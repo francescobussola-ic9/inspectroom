@@ -1,0 +1,337 @@
+.bk-app {
+  background: #172231;
+  padding: 16px 20px 20px;
+  color: #f1f3f3;
+}
+.bk-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 4px 8px 16px;
+}
+.bk-toolbar span {
+  font-size: .75rem;
+  color: #7dbcf1;
+  letter-spacing: .13em;
+  font-weight: 700;
+}
+.bk-toolbar h3 {
+  font-size: 1.48rem;
+  margin: 5px 0 0;
+}
+.bk-progress {
+  font-size: .79rem;
+  color: #c0d5e4;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+.bk-cover {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 570px;
+  filter: drop-shadow(0 15px 27px rgba(0,0,0,.34));
+  position: relative;
+}
+.bk-cover:after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 25px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg,rgba(38,27,13,0),rgba(57,40,20,.15) 44%,rgba(255,255,255,.13) 70%,rgba(0,0,0,0));
+  z-index: 3;
+}
+.bk-page {
+  background: #f6f2e9;
+  color: #262b2d;
+  min-width: 0;
+  position: relative;
+  padding: 32px 37px 38px;
+}
+.bk-text-page {
+  border-radius: 10px 0 0 10px;
+  background: linear-gradient(90deg,#f8f6ee 0%,#f7f4eb 83%,#e9e4d9 100%);
+}
+.bk-image-page {
+  border-radius: 0 10px 10px 0;
+  background: linear-gradient(90deg,#e9e4d8,#f6f2e9 14%);
+  display: flex;
+  flex-direction: column;
+}
+.bk-top-label {
+  font: 700 .73rem/1.2 system-ui,sans-serif;
+  letter-spacing: .11em;
+  color: #6b7880;
+  margin-bottom: 19px;
+}
+.bk-text-page h2 {
+  font-family: Georgia,serif;
+  font-size: clamp(1.55rem,2.25vw,2.3rem);
+  line-height: 1.12;
+  letter-spacing: -.03em;
+  color: #243b48;
+  margin: 0 0 24px;
+}
+.bk-prose {
+  font: 400 clamp(.91rem,1vw,1.04rem)/1.64 Georgia,'Times New Roman',serif;
+  text-align: justify;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+.bk-prose p {
+  margin: 0;
+}
+.bk-prose p+p {
+  text-indent: 1.45em;
+  margin-top: 8px;
+}
+.bk-prose strong {
+  font-weight: 700;
+  color: #233d53;
+}
+.bk-pagenum {
+  position: absolute;
+  bottom: 17px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font: 500 .85rem Georgia,serif;
+  color: #858178;
+}
+.bk-image-holder {
+  flex: 1;
+  min-height: 370px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #10263b;
+}
+.bk-image-holder img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
+.bk-enlarge {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 7px 10px;
+  background: #182a3cdb;
+  color: #fff;
+  border: 1px solid #a4bcc8;
+  border-radius: 8px;
+  font-size: .8rem;
+}
+.bk-figcaption {
+  font: italic .83rem/1.45 Georgia,serif;
+  color: #4b5253;
+  margin: 12px 0 6px;
+}
+.bk-source {
+  font-size: .79rem;
+  color: #1e5f86;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-bottom: 13px;
+}
+.bk-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  max-width: 1200px;
+  margin: 15px auto 0;
+}
+.bk-footer button {
+  border-radius: 10px;
+  border: 1px solid #527997;
+  background: #193c55;
+  color: #f3faff;
+  font-weight: 700;
+  padding: 11px 14px;
+}
+.bk-footer button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+.bk-footer span {
+  color: #d8e9f3;
+}
+.bk-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,7,13,.9);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #fff;
+}
+.bk-lightbox[hidden] {
+  display: none!important;
+}
+.bk-lightbox img {
+  max-width: min(94vw,960px);
+  max-height: 74vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.bk-lightbox p {
+  max-width: 800px;
+  line-height: 1.5;
+}
+.bk-lightbox button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #22394d;
+  color: #fff;
+  border: 1px solid #9bb4c5;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  padding: 3px 13px;
+}
+@media(max-width:920px) {
+  .bk-cover {
+    min-height: 540px;
+  }
+  .bk-page {
+    padding: 24px 23px 38px;
+  }
+  .bk-prose {
+    font-size: .9rem;
+    line-height: 1.51;
+  }
+  .bk-image-holder {
+    min-height: 340px;
+  }
+}
+@media(max-width:690px) {
+  .bk-app {
+    padding: 12px;
+  }
+  .bk-toolbar {
+    align-items: flex-start;
+  }
+  .bk-cover {
+    grid-template-columns: 1fr;
+  }
+  .bk-cover:after {
+    display: none;
+  }
+  .bk-page {
+    border-radius: 0;
+  }
+  .bk-text-page {
+    border-radius: 9px 9px 0 0;
+  }
+  .bk-image-page {
+    border-radius: 0 0 9px 9px;
+    min-height: 430px;
+  }
+  .bk-prose {
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+  .bk-image-holder {
+    min-height: 300px;
+  }
+  .bk-pagenum {
+    display: none;
+  }
+  .bk-progress {
+    display: none;
+  }
+  .bk-toolbar h3 {
+    font-size: 1.25rem;
+  }
+  .bk-footer button {
+    font-size: .9rem;
+    padding: 10px;
+  }
+}
+.bk-credits {
+  font-size: .75rem;
+  line-height: 1.45;
+  color: #435460;
+  margin: 3px 0 9px;
+}
+.bk-credits a {
+  color: #225e89;
+  text-underline-offset: 2px;
+}
+.bk-image-holder img {
+  object-fit: contain;
+  background: #10263b;
+}
+/* 0.2c.9.3 — navigazione superiore e titolo essenziale, soltanto hotspot Libro */
+.bk-app {
+  padding-top: 11px;
+}
+.bk-toolbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 3px 3px 12px;
+}
+.bk-book-heading {
+  font-weight: 600;
+  letter-spacing: .005em;
+  font-size: 1rem;
+  color: #c9d9e5;
+}
+.bk-top-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  white-space: nowrap;
+}
+.bk-top-navigation button {
+  border-radius: 10px;
+  border: 1px solid #527997;
+  background: #193c55;
+  color: #f3faff;
+  font-weight: 700;
+  padding: 10px 13px;
+}
+.bk-top-navigation button:disabled {
+  opacity: .38;
+  cursor: default;
+}
+.bk-top-navigation span {
+  color: #d8e9f3;
+  min-width: 42px;
+  text-align: center;
+  font-size: .9rem;
+}
+@media(max-width:690px) {
+  .bk-toolbar {
+    flex-wrap: wrap;
+    padding: 5px 0 12px;
+  }
+  .bk-top-navigation {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .bk-top-navigation button {
+    padding: 9px 10px;
+    font-size: .84rem;
+  }
+  .bk-book-heading {
+    font-size: .9rem;
+  }
+}
