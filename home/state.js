@@ -9,7 +9,7 @@ const objects = [
   {id: 'book', name: 'Fisica · approfondimenti', x: 12.5, y: 54.5},
   {id: 'model', name: 'Il Modello Standard', x: 81.0, y: 20.2}
 ];
-const titles = {chamber: 'Camera a nebbia', detector: 'Rilevatore di particelle', kcl: 'Cloruro di potassio', solar: 'Telescopio', electric: 'Lampada', cosmic: 'Raggi cosmici', proton: 'Il nucleo di un atomo', book: 'Fisica · approfondimenti', model: 'Il Modello Standard', help: 'Come funziona INSPECTROOM?'};
+const titles = {chamber: 'Camera a nebbia', detector: 'Rilevatore di particelle', kcl: 'Cloruro di potassio', solar: 'Telescopio', electric: 'Lampada', cosmic: 'Raggi cosmici', proton: 'Dentro il nucleo atomico', book: 'Fisica · approfondimenti', model: 'Il Modello Standard', help: 'Come funziona INSPECTROOM?'};
 const state = {  
 mode: 'real', pins: false, current: null, modelExpanded: false,
   chamber: {view: 'perspective', source: 'background', running: true, lastType: 'Muone candidato', lastGenerator: 'Fondo naturale'},
