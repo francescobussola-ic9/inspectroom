@@ -1,6 +1,6 @@
 const nuParticleCards = {
-  proton: {symbol: 'p', name: 'Protone', family: 'Particelle composte', tile: 'composite', text: 'Il protone non è una particella elementare: è formato da quark legati dall’interazione forte. Nel deuterio è uno dei due nucleoni del nucleo.'},
-  neutron: {symbol: 'n', name: 'Neutrone', family: 'Particelle composte', tile: 'composite', text: 'Anche il neutrone non è elementare. Nel nucleo del deuterio accompagna il protone e contribuisce a formare il nucleo atomico.'},
+  proton: {symbol: 'p', name: 'Protone', family: 'Particelle composte', tile: 'composite', text: 'Il protone è una particella presente nel nucleo degli atomi e possiede una carica elettrica positiva. Al suo interno ci sono quark tenuti insieme dai gluoni. Insieme ai neutroni, i protoni formano i nuclei atomici.'},
+  neutron: {symbol: 'n', name: 'Neutrone', family: 'Particelle composte', tile: 'composite', text: 'Il neutrone è una particella presente nel nucleo di molti atomi. Non possiede carica elettrica ed è formato da quark tenuti insieme dai gluoni. Ha una massa molto simile a quella del protone.'},
   quark: {model: 'Quark', tile: 'quark'},
   gluon: {model: 'Gluoni', tile: 'boson'}
 };
@@ -33,14 +33,14 @@ function renderNucleone() {
   dialogContent.innerHTML = `<div class="nu-experience" id="nuExperience">
     <div class="nu-main">
       <div class="nu-topbar">
-        <div><span class="nu-eyebrow">ESPLORA · QUARK E GLUONI</span><h3>Alla scoperta di quark e gluoni</h3><p>Esplora il nucleo di un atomo e scopri che cosa tiene uniti protoni e neutroni.</p></div>
-        <span class="nu-live">ESPERIMENTO INTERATTIVO</span>
+        <div><span class="nu-eyebrow">ESPLORA · QUARK E GLUONI</span><h3>Alla scoperta di quark e gluoni</h3><p>Esplora il nucleo di un atomo e scopri che cosa si nasconde dentro protoni e neutroni.</p></div>
+        <span class="nu-live">ESPLORAZIONE INTERATTIVA</span>
       </div>
       <div class="nu-stage-wrap">
         <div class="nu-info-panel" aria-live="polite">
-          <div class="nu-info-copy" data-nu-info="0"><strong>Questo è un atomo di deuterio.</strong><p>Nel nucleo ci sono un <strong>protone</strong> e un <strong>neutrone</strong>.</p><button type="button" class="nu-cta" data-nu-next="1">Esplora il nucleo →</button></div>
-          <div class="nu-info-copy" data-nu-info="1" hidden><strong>Il protone e il neutrone sono formati da quark.</strong><p>Questi quark sono le particelle che usiamo per descrivere la struttura interna dei nucleoni.</p><button type="button" class="nu-cta" data-nu-next="2">Scopri cosa li tiene uniti →</button></div>
-          <div class="nu-info-copy" data-nu-info="2" hidden><strong>I quark sono tenuti insieme dai gluoni.</strong><p>Prova a separare i quark: più allontani quello verde, più il legame diventa intenso. Quando lo lasci, il quark torna verso gli altri.</p></div>
+          <div class="nu-info-copy" data-nu-info="0"><strong>Osserviamo un atomo di deuterio.</strong><p>Nel nucleo ci sono un <strong>protone</strong> e un <strong>neutrone</strong>.</p><button type="button" class="nu-cta" data-nu-next="1">Esplora il nucleo →</button></div>
+          <div class="nu-info-copy" data-nu-info="1" hidden><strong>Il protone e il neutrone sono formati da quark.</strong><p>In ciascuno troviamo tre quark: possono essere di tipo up oppure down.</p><button type="button" class="nu-cta" data-nu-next="2">Scopri cosa li tiene uniti →</button></div>
+          <div class="nu-info-copy" data-nu-info="2" hidden><strong>I quark sono tenuti insieme dai gluoni.</strong><p>Trascina il quark verde per provare ad allontanarlo dagli altri. Osserva come cambia l’energia del legame.</p></div>
         </div>
         <div class="nu-stage" id="nuStage">
           <div class="nu-scene nu-step1 active" data-nu-scene="0">
@@ -56,11 +56,11 @@ function renderNucleone() {
           </div>
           <div class="nu-scene nu-step2" data-nu-scene="1">
             <div class="nu-nucleon-card proton-card">
-              <h4>Protone</h4><p>2 quark up + 1 quark down</p>
+              <h4>Protone</h4><p>2 quark up e 1 quark down</p>
               <div class="nu-quark-chip nu-quark-u nu-q1">u</div><div class="nu-quark-chip nu-quark-u nu-q2">u</div><div class="nu-quark-chip nu-quark-d nu-q3">d</div>
             </div>
             <div class="nu-nucleon-card neutron-card">
-              <h4>Neutrone</h4><p>1 quark up + 2 quark down</p>
+              <h4>Neutrone</h4><p>1 quark up e 2 quark down</p>
               <div class="nu-quark-chip nu-quark-u nu-q1">u</div><div class="nu-quark-chip nu-quark-d nu-q2">d</div><div class="nu-quark-chip nu-quark-d nu-q3">d</div>
             </div>
             <div class="nu-tag" style="left:18%;top:12%">protone</div>
@@ -78,7 +78,7 @@ function renderNucleone() {
                 <g id="nuLinksGlow"></g>
                 <g id="nuLinksCore"></g>
                 <text x="34" y="38" class="nu-proton-label">UN PROTONE</text>
-                <text x="34" y="59" class="nu-proton-note">Trascina il quark verde e osserva il legame forte.</text>
+                <text x="34" y="59" class="nu-proton-note">Trascina il quark verde e osserva cosa succede.</text>
                 <g id="nuNodeA"><circle cx="318" cy="168" r="28" fill="url(#nuAU)" opacity="0"></circle><circle cx="318" cy="168" r="28" fill="#8c70e0"></circle><text x="318" y="176" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">u</text></g>
                 <g id="nuNodeB"><circle cx="342" cy="294" r="28" fill="#cb8b48"></circle><text x="342" y="302" text-anchor="middle" fill="#fff" font-size="20" font-weight="700">d</text></g>
                 <g id="nuDragNode" style="touch-action:none;cursor:grab">
@@ -88,7 +88,7 @@ function renderNucleone() {
                 </g>
               </svg>
             </div>
-            <div class="nu-energy"><strong>Energia del legame</strong><div class="nu-energy-bar"><div class="nu-energy-fill" id="nuEnergyFill"></div></div><small id="nuEnergyText">I quark sono vicini: il sistema rimane stabile.</small></div>
+            <div class="nu-energy"><strong>Energia del legame</strong><div class="nu-energy-bar"><div class="nu-energy-fill" id="nuEnergyFill"></div></div><small id="nuEnergyText">I quark sono vicini e rimangono legati.</small></div>
             <div class="nu-hand nu-hand-anim" id="nuHand" aria-hidden="true">
               <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 72c-2-3-3-6-3-10V44c0-3 2-5 5-5s5 2 5 5v-18c0-3 2-5 5-5s5 2 5 5v15c0-3 2-5 5-5s5 2 5 5v4c0-3 2-5 5-5s5 2 5 5v20c0 10-8 18-18 18H49c-5 0-10-2-13-6Z" fill="rgba(244,249,255,.92)"/><path d="M63 26v22M53 31v17M43 28v15" stroke="rgba(9,22,34,.45)" stroke-width="2.6" stroke-linecap="round"/></svg>
             </div>
@@ -96,7 +96,6 @@ function renderNucleone() {
           </div>
         </div>
       </div>
-      <p class="nu-caption">Rappresentazione semplificata per la scuola media: il comportamento elastico è un’analogia visiva utile per intuire il <strong>confinamento</strong>, non una simulazione quantitativa della cromodinamica quantistica.</p>
     </div>
     <aside class="nu-side">
       <div class="nu-side-label">ESPLORA · APRI UNA TAPPA</div>
@@ -162,9 +161,9 @@ function nuInitDrag(root) {
     halo.setAttribute('cx', current.x); halo.setAttribute('cy', current.y);
     dragNode.style.transform = '';
     energyFill.style.width = (12 + level * 88) + '%';
-    if (level < .16) energyText.textContent = 'I quark sono vicini: il sistema rimane stabile.';
-    else if (level < .5) energyText.textContent = 'Il legame si tende: la forza che tiene uniti i quark si fa più evidente.';
-    else energyText.textContent = 'L’energia del legame aumenta ancora: il quark viene richiamato verso gli altri.';
+    if (level < .16) energyText.textContent = 'I quark sono vicini e rimangono legati.';
+    else if (level < .5) energyText.textContent = 'Allontanando il quark, aumenta l’energia del legame.';
+    else energyText.textContent = 'L’energia continua ad aumentare: il quark non può essere isolato.';
   }
   function clampTarget(x, y) {
     let dx = x - anchor.x, dy = y - anchor.y; const d = Math.hypot(dx, dy);
