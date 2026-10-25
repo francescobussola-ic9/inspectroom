@@ -8,6 +8,7 @@
 .nu-main {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
   min-width: 0;
   background: linear-gradient(180deg,#081321 0%,#07101b 100%)
 }
@@ -94,6 +95,7 @@
   font-size: .85rem
 }
 .nu-stage {
+  width: 100%;
   position: relative;
   border: 1px solid #234560;
   border-radius: 16px;
@@ -407,7 +409,7 @@
 }
 .nu-step1 .nu-atom-shell,.nu-step1 .nu-cloud {
   position: absolute;
-  inset: 8% 16% 18% 16%;
+  inset: 6% 7% 14% 7%;
   border-radius: 50%
 }
 .nu-step1 .nu-atom-shell {
@@ -433,7 +435,7 @@
 }
 .nu-step1 .nu-electron-orbit {
   position: absolute;
-  inset: 12% 20% 20% 20%;
+  inset: 9% 11% 17% 11%;
   animation: nu-rotate 11s linear infinite;
   transform-origin: 50% 50%
 }
@@ -737,4 +739,58 @@
 }
 .nu-particle-symbol.nu-composite,.nu-particle-large-symbol.nu-composite {
   background: #324a62
+}
+
+/* Pannello esplicativo sotto le tre scene: non copre la grafica. */
+.nu-info-panel {
+  min-width: 0;
+  border: 1px solid rgba(117,178,223,.42);
+  border-radius: 14px;
+  background: #0b1b2a;
+  padding: 14px 16px;
+}
+.nu-info-copy[hidden] { display: none !important; }
+.nu-info-copy > strong {
+  display: block;
+  color: #f5fbff;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.nu-info-copy p {
+  margin: 0;
+  color: #d4e1eb;
+  line-height: 1.52;
+  font-size: .95rem;
+}
+.nu-info-copy .nu-cta { margin-top: 12px; }
+
+/* Pannello introduttivo sopra la simulazione; comandi sulla destra. */
+.nu-info-copy:not([hidden]) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 22px;
+  align-items: center;
+}
+.nu-info-copy > strong,
+.nu-info-copy > p {
+  grid-column: 1;
+}
+.nu-info-copy > .nu-cta {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  margin-top: 0;
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  .nu-info-copy:not([hidden]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .nu-info-copy > .nu-cta {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+    margin-top: 12px;
+    white-space: normal;
+  }
 }
