@@ -37,7 +37,7 @@ function renderDetector() {
   dialogContent.innerHTML = `<div class="mp-experience" id="mpExperience">
     <div class="mp-main">
       <div class="mp-topbar">
-        <div><span class="mp-eyebrow">INSPECTROOM · RILEVATORE DI PARTICELLE</span><h3>Pixel che vedono la radiazione</h3></div>
+        <div><span class="mp-eyebrow">INSPECTROOM · RILEVATORE DI PARTICELLE</span><h3>Rivelatore a pixel</h3><p style="margin:6px 0 0;max-width:660px;color:#b7cddd;font-size:.93rem;line-height:1.4">Il <strong>rivelatore a pixel</strong> è uno strumento elettronico che permette di osservare il passaggio delle particelle, registrando i segnali prodotti quando attraversano il suo sensore.</p></div>
         <span class="mp-live" id="mpLive">${det.view === 'photo' ? 'FOTOGRAFIA DEL SISTEMA' : '● ACQUISIZIONE SIMULATA'}</span>
       </div>
 
