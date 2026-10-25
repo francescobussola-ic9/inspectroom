@@ -32,7 +32,7 @@ function renderChamber() {
       </section>
     </div>
     <aside class="ch-side"><div class="ch-side-label">ESPLORA</div><h3>Come nasce una traccia?</h3><p>Una particella <b>carica</b> attraversa il vapore sovrasaturo e ionizza il gas. Minuscole goccioline si formano lungo il percorso: è la <b>traccia</b> che riusciamo a vedere.</p>
-      <div class="ch-process"><div><span>01</span><strong>Passaggio</strong><small>Una particella carica attraversa il volume sensibile.</small></div><div><span>02</span><strong>Ionizzazione</strong><small>Si formano ioni lungo il suo percorso.</small></div><div><span>03</span><strong>Condensazione</strong><small>Il vapore forma goccioline visibili lungo la traccia.</small></div></div>
+      <div class="ch-process"><div><span>1</span><strong>Passaggio</strong><small>Una particella carica attraversa il volume sensibile.</small></div><div><span>2</span><strong>Ionizzazione</strong><small>Si formano ioni lungo il suo percorso.</small></div><div><span>3</span><strong>Condensazione</strong><small>Il vapore forma goccioline visibili lungo la traccia.</small></div></div>
       <div class="ch-side-label">CONDIZIONI SIMULATE</div>
       <div class="ch-scenarios"><button class="ch-control ${chamber.source === 'background' ? 'active' : ''}" id="chBackground">Fondo naturale</button><button class="ch-control ${chamber.source === 'source' ? 'active' : ''}" id="chSource">Scenario con più eventi</button></div>
       <div class="ch-reading"><span>ULTIMO EVENTO</span><strong id="chLastType">${chamber.lastType}</strong><small id="chLastGen">${chamber.source === 'source' ? 'Scenario con più eventi' : 'Fondo naturale'}</small></div>
