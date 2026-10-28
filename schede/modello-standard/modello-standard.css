@@ -4,8 +4,8 @@
 .sm-family{--family:#a9b0c6;--family-bg:#2c344a;background:#142436;border:1px solid var(--family);border-radius:12px;overflow:hidden}
 .sm-family h3{margin:0;padding:11px 15px;background:var(--family-bg);font-size:1.12rem;font-weight:700}
 .sm-quarks{--family:#bd9ada;--family-bg:#634579}
-.sm-leptons{--family:#e3a1a2;--family-bg:#8b4850}
-.sm-bosons{--family:#9ad6a4;--family-bg:#396e4e}
+.sm-leptons{--family:#9ad6a4;--family-bg:#396e4e}
+.sm-bosons{--family:#e3a1a2;--family-bg:#8b4850}
 .sm-higgs{--family:#e9cb6b;--family-bg:#866d2f}
 .sm-family-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;padding:12px}
 .sm-family .sm-item{background:color-mix(in srgb,var(--family-bg),#273a4a 38%);border-color:var(--family);min-width:0}
@@ -133,6 +133,14 @@
   z-index: 1;
   margin-bottom: 0;
 }
+/* Scambio delle POSIZIONI di leptoni e bosoni, senza cambiare i colori.
+   Il titolo pseudo-elemento resta sempre in apertura. */
+#smExperience .sm-families::before { order: -1; }
+#smExperience .sm-quarks { order: 0; }
+#smExperience .sm-bosons { order: 1; }
+#smExperience .sm-leptons { order: 2; }
+#smExperience .sm-higgs { order: 3; }
+
 /* Titolo stampato sulla carta, sopra le sezioni delle particelle. */
 #smExperience .sm-families::before {
   content: 'IL MODELLO STANDARD';
