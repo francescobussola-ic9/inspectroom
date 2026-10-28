@@ -1,6 +1,6 @@
 # INSPECTROOM
 
-**Versione v0.3.5**
+**Versione v0.5.1**
 
 ## Il progetto
 
