@@ -5,8 +5,8 @@ const nuParticleCards = {
   gluon: {model: 'Gluoni', tile: 'boson'}
 };
 const nuSteps = [
-  {title: 'Atomo di deuterio', short: 'Dal livello atomico al nucleo.', heading: '1 · Il deuterio', text: 'Il <strong>deuterio</strong> è un isotopo dell'idrogeno. A differenza dell'idrogeno più comune, che possiede un nucleo formato da un solo protone, il deuterio ha nel suo nucleo un <strong>protone</strong> e un <strong>neutrone</strong>.'},
-  {title: 'Protone e neutrone', short: 'I nucleoni contengono quark.', heading: '2 · Dentro i nucleoni', text: 'Se osserviamo più da vicino un <strong>protone</strong> e un <strong>neutrone</strong, scopriamo che al loro interno si trovano particelle ancora più piccole: i <strong>quark</strong>.'},
+  {title: 'Atomo di deuterio', short: 'Dal livello atomico al nucleo.', heading: '1 · Il deuterio', text: 'Il <strong>deuterio</strong> è un isotopo dell’idrogeno. A differenza dell’idrogeno più comune, che possiede un nucleo formato da un solo protone, il deuterio ha nel suo nucleo un <strong>protone</strong> e un <strong>neutrone</strong>.'},
+  {title: 'Protone e neutrone', short: 'I nucleoni contengono quark.', heading: '2 · Dentro i nucleoni', text: 'Se osserviamo più da vicino un <strong>protone</strong> e un <strong>neutrone</strong>, scopriamo che al loro interno si trovano particelle ancora più piccole: i <strong>quark</strong>.'},
   {title: 'Gluoni e confinamento', short: 'Il legame forte impedisce di separare i quark.', heading: '3 · Prova a separare un quark', text: 'I <strong>quark</strong> sono tenuti insieme da una forza molto intensa, chiamata <strong>interazione forte</strong>. Questa forza agisce attraverso altre particelle, i <strong>gluoni</strong>.<br><br>Prova ad allontanare un quark dagli altri: più cerchi di separarlo, più aumenta l’energia necessaria e, nella nostra simulazione, il quark viene richiamato verso gli altri. In natura, infatti, non possiamo trovare quark isolati. Questo fenomeno si chiama <strong>confinamento</strong>.'}
 ];
 function nuParticleTiles(ids) {
