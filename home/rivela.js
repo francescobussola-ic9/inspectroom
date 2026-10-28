@@ -23,10 +23,38 @@ function newSource() {
   const speed = beta ? rand(120, 230) : rand(180, 320);
   sparks.push({kind: beta ? 'beta' : 'gamma', x, y, vx: Math.cos(a) * speed, vy: Math.sin(a) * speed, age: 0, life: beta ? rand(.18, .34) : rand(.11, .22), len: beta ? rand(14, 28) : rand(22, 40)});
 }
+// Direzione proiettata comune: luce solare e neutrini arrivano dal Sole.
+// Il vettore definisce l'inclinazione, non la velocità delle particelle reali.
+const solarDirection = {x: 0.87, y: 0.49};
+const solarWindows = [
+  {x1: 62, x2: 132, y1: 62, y2: 191},   // finestra sinistra, interno del vetro
+  {x1: 382, x2: 486, y1: 66, y2: 189}  // finestra centrale, interno del vetro
+];
+let nextSolarWindow = 0;
+const solarLanes = [0, 0];
 function newSolarLine(boost = 1) {
-  const sx = rand(366, 509), sy = rand(48, 215);
-  const ex = sx + rand(135, 350), ey = sy + rand(155, 315);
-  solarLines.push({sx, sy, ex, ey, age: 0, life: rand(3.4, 7.2), alpha: rand(.14, .26) * boost, width: rand(1.3, 2.8), pulse: rand(.18, .44), phase: rand(0, Math.PI * 2)});
+  // Due finestre: origine nel vetro, non sull'infisso. I raggi di ciascun
+  // fascio si aprono appena verso l'aula, senza incrociarsi come raggi casuali.
+  const windowIndex = nextSolarWindow;
+  const glass = solarWindows[windowIndex];
+  nextSolarWindow = (nextSolarWindow + 1) % solarWindows.length;
+  const lane = solarLanes[windowIndex]++ % 3;
+  const sx = (glass.x1 + glass.x2) / 2 + rand(-6, 6);
+  const sy = glass.y1 + (glass.y2 - glass.y1) * (.28 + lane * .22) + rand(-3, 3);
+
+  // Divergenza massima di circa 2 gradi tra i raggi estremi del fascio.
+  // L'ordine delle direzioni segue quello dei punti d'origine: niente incroci.
+  const baseAngle = Math.atan2(solarDirection.y, solarDirection.x);
+  const angle = baseAngle + (lane - 1) * .017;
+  const dx = Math.cos(angle), dy = Math.sin(angle);
+  // Proseguire idealmente fuori dall'immagine anziché troncare a metà aula.
+  const length = Math.min((W - sx) / dx, (H - sy) / dy) + 70;
+  solarLines.push({
+    sx, sy, ex: sx + dx * length, ey: sy + dy * length,
+    age: 0, life: rand(4.8, 7.8), alpha: rand(.14, .25) * boost,
+    width: rand(1.3, 2.6), pulse: rand(.18, .36),
+    phase: rand(0, Math.PI * 2)
+  });
 }
 function targetSolarCount(cloudLevel) {
   return Math.max(2, Math.min(5, Math.round(2 + cloudLevel * 3)));
@@ -34,13 +62,21 @@ function targetSolarCount(cloudLevel) {
 function drawSolarLine(ctx, b, cloudLevel) {
   const fadeIn = Math.min(1, b.age / .7), fadeOut = Math.min(1, (b.life - b.age) / 1.0);
   let env = Math.max(0, Math.min(fadeIn, fadeOut));
-  env *= (.72 + .28 * Math.sin((b.phase || 0) + b.age * (b.pulse || .3) * 2));
+  env *= (.72 + .28 * Math.sin(b.phase + b.age * b.pulse * 2));
   const a = Math.max(0, env * (.35 + .65 * cloudLevel) * b.alpha);
+  // La luce non finisce a metà stanza: è la visibilità del fascio a svanire.
+  // Il gradiente è applicato lungo il raggio, non soltanto al suo ultimo tratto.
+  const light = ctx.createLinearGradient(b.sx, b.sy, b.ex, b.ey);
+  light.addColorStop(0, `rgba(255,226,140,${a * .72})`);
+  light.addColorStop(.09, `rgba(255,226,110,${a})`);
+  light.addColorStop(.42, `rgba(255,226,110,${a * .65})`);
+  light.addColorStop(.72, `rgba(255,226,110,${a * .22})`);
+  light.addColorStop(1, 'rgba(255,226,110,0)');
   ctx.save();
   ctx.lineWidth = b.width;
-  ctx.strokeStyle = `rgba(255,226,110,${a})`;
-  ctx.shadowColor = 'rgba(255,220,110,.95)';
-  ctx.shadowBlur = 10;
+  ctx.strokeStyle = light;
+  ctx.shadowColor = 'rgba(255,220,110,.75)';
+  ctx.shadowBlur = 8;
   ctx.beginPath();
   ctx.moveTo(b.sx, b.sy);
   ctx.lineTo(b.ex, b.ey);
@@ -50,7 +86,9 @@ function drawSolarLine(ctx, b, cloudLevel) {
 function newNeutrino() {
   // Solar neutrinos cross the classroom in the same projected direction as sunlight,
   // regardless of window frames, clouds and furniture: educational symbolic overlay.
-  const sx = rand(-260, 700), sy = rand(-210, 570), vx = rand(320, 460), vy = rand(175, 255);
+  const sx = rand(-260, 700), sy = rand(-210, 570);
+  const speed = rand(365, 530);
+  const vx = solarDirection.x * speed, vy = solarDirection.y * speed;
   neutrinoDust.push({x: sx, y: sy, vx, vy, life: rand(2.5, 4.0), age: 0, r: rand(1.3, 2.2), a: rand(.58, .87)});
 }
 function newLampPhoton() {
