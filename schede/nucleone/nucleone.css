@@ -481,31 +481,38 @@
 }
 .nu-step2 .nu-nucleon-card {
   position: absolute;
-  top: 16%;
+  top: 22%;
   width: 34%;
-  height: 44%;
-  border-radius: 22px;
-  border: 1px solid rgba(122,191,240,.28);
-  background: linear-gradient(180deg,rgba(13,26,39,.96),rgba(8,17,27,.94));
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02),0 16px 30px rgba(0,0,0,.2)
+  aspect-ratio: 1;
+  height: auto;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  background: radial-gradient(circle at 50% 40%, rgba(24, 49, 72, .94), rgba(8, 17, 27, .97));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .04), 0 16px 30px rgba(0, 0, 0, .2);
 }
+
 .nu-step2 .nu-nucleon-card.proton-card {
-  left: 10%
+  left: 10%;
+  border-color: #da6e56;
 }
+
 .nu-step2 .nu-nucleon-card.neutron-card {
-  right: 10%
+  right: 10%;
+  border-color: #5f98c7;
 }
-.nu-step2 .nu-nucleon-card h4 {
-  margin: 16px 0 0;
-  text-align: center;
-  font-size: 1.08rem
-}
+
 .nu-step2 .nu-nucleon-card p {
-  margin: 6px 22px 0;
+  position: absolute;
+  top: 12%;
+  left: 7%;
+  right: 7%;
+  margin: 0;
   text-align: center;
-  color: #aecdde;
-  font-size: .9rem
+  color: #c9ddeb;
+  font-size: clamp(.68rem, .95vw, .9rem);
+  line-height: 1.25;
 }
+
 .nu-quark-chip {
   position: absolute;
   width: 52px;
@@ -525,16 +532,16 @@
   background: radial-gradient(circle at 35% 30%,#ffd58c 0,#cc8b49 62%,#9a5a20 100%)
 }
 .nu-q1 {
-  left: 26%;
-  top: 33%
+  left: 38%;
+  top: 38%
 }
 .nu-q2 {
-  left: 12%;
-  top: 60%
+  left: 17%;
+  top: 62%
 }
 .nu-q3 {
-  left: 54%;
-  top: 58%
+  left: 57%;
+  top: 62%
 }
 .nu-step3 .nu-proton-area {
   position: absolute;
@@ -713,9 +720,9 @@
     transform: translate(-50%,-50%) scale(.88)
   }
   .nu-step2 .nu-nucleon-card {
-    top: 15%;
-    height: 48%;
-    width: 39%
+    top: 24%;
+    width: 39%;
+    height: auto;
   }
   .nu-step2 .nu-quark-chip {
     width: 44px;
@@ -793,4 +800,9 @@
     margin-top: 12px;
     white-space: normal;
   }
+}
+
+/* La terza tappa gestisce il trascinamento anche con il dito. */
+.nu-step3 #nuDragSvg {
+  touch-action: none;
 }
