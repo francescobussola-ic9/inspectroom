@@ -7,7 +7,7 @@ const nuParticleCards = {
 const nuSteps = [
   {title: 'Atomo di deuterio', short: 'Dal livello atomico al nucleo.', heading: '1 · Il deuterio', text: 'Il <strong>deuterio</strong> è un isotopo dell’idrogeno. Nel suo nucleo troviamo un <strong>protone</strong> e un <strong>neutrone</strong>: è un punto di partenza semplice per scendere dentro la materia.'},
   {title: 'Protone e neutrone', short: 'I nucleoni contengono quark.', heading: '2 · Dentro i nucleoni', text: 'Quando ingrandiamo il nucleo scopriamo che <strong>protone</strong> e <strong>neutrone</strong> non sono elementari. In questa rappresentazione scolastica vediamo i loro <strong>quark di valenza</strong>.'},
-  {title: 'Gluoni e confinamento', short: 'Il legame forte impedisce di separare i quark.', heading: '3 · Prova a separare un quark', text: 'I <strong>gluoni</strong> mediano l’interazione forte. Se provi ad allontanare un quark, il legame non si spezza: l’energia del sistema cresce e il quark viene richiamato verso gli altri. Questo comportamento prende il nome di <strong>confinamento</strong>.'}
+  {title: 'Gluoni e confinamento', short: 'Il legame forte impedisce di separare i quark.', heading: '3 · Prova a separare un quark', text: 'I <strong>quark</strong> sono tenuti insieme da una forza molto intensa, chiamata <strong>interazione forte</strong>. Questa forza agisce attraverso altre particelle, i <strong>gluoni</strong>.<br><br>Prova ad allontanare un quark dagli altri: più cerchi di separarlo, più aumenta l’energia necessaria e, nella nostra simulazione, il quark viene richiamato verso gli altri. In natura, infatti, non possiamo trovare quark isolati. Questo fenomeno si chiama <strong>confinamento</strong>.'}
 ];
 function nuParticleTiles(ids) {
   return `<div class="nu-particles"><div class="nu-side-label">PARTICELLE COINVOLTE</div><h4>Apri una scheda rapida</h4><div class="nu-particle-grid">${ids.map(id => {const p = smCardData(nuParticleCards[id]); return `<button type="button" class="nu-particle-tile" data-nu-particle="${id}" aria-label="Apri la scheda ${p.name}"><span class="nu-particle-symbol nu-${p.tile}">${p.symbol}</span><span class="nu-particle-info"><strong>${p.name}</strong><small>${p.family}</small></span><span class="nu-particle-arrow">↗</span></button>`}).join('')}</div></div><div class="nu-particle-modal" id="nuParticleModal" hidden role="dialog" aria-modal="true" aria-label="Scheda particella"><div class="nu-particle-dialog"><button class="nu-particle-close" type="button" aria-label="Chiudi scheda">×</button><span class="nu-particle-large-symbol" id="nuParticleSymbol"></span><h3 id="nuParticleName"></h3><div id="nuParticleText"></div><span class="nu-particle-family" id="nuParticleFamily"></span></div></div>`;
@@ -39,7 +39,7 @@ function renderNucleone() {
       <div class="nu-stage-wrap">
         <div class="nu-info-panel" aria-live="polite">
           <div class="nu-info-copy" data-nu-info="0"><strong>Osserviamo un atomo di deuterio.</strong><p>Nel nucleo ci sono un <strong>protone</strong> e un <strong>neutrone</strong>.</p><button type="button" class="nu-cta" data-nu-next="1">Esplora il nucleo →</button></div>
-          <div class="nu-info-copy" data-nu-info="1" hidden><strong>Il protone e il neutrone sono formati da quark.</strong><p>In ciascuno troviamo tre quark: possono essere di tipo up oppure down.</p><button type="button" class="nu-cta" data-nu-next="2">Scopri cosa li tiene uniti →</button></div>
+          <div class="nu-info-copy" data-nu-info="1" hidden><strong>Il protone e il neutrone sono formati da quark.</strong><p>Le <strong>palline colorate</strong> rappresentano i quark. Ne esistono sei tipi, con nomi piuttosto curiosi: <strong>up, down, charm, strange, top e bottom</strong>. Nei protoni e nei neutroni vediamo tre quark principali, di tipo <strong>up</strong> e <strong>down</strong>, indicati rispettivamente con le lettere <strong>u</strong> e <strong>d</strong>.</p><button type="button" class="nu-cta" data-nu-next="2">Scopri cosa li tiene uniti →</button></div>
           <div class="nu-info-copy" data-nu-info="2" hidden><strong>I quark sono tenuti insieme dai gluoni.</strong><p>Trascina il quark verde per provare ad allontanarlo dagli altri. Osserva come cambia l’energia del legame.</p></div>
         </div>
         <div class="nu-stage" id="nuStage">
@@ -56,11 +56,11 @@ function renderNucleone() {
           </div>
           <div class="nu-scene nu-step2" data-nu-scene="1">
             <div class="nu-nucleon-card proton-card">
-              <h4>Protone</h4><p>2 quark up e 1 quark down</p>
+              <p>2 quark up e 1 quark down</p>
               <div class="nu-quark-chip nu-quark-u nu-q1">u</div><div class="nu-quark-chip nu-quark-u nu-q2">u</div><div class="nu-quark-chip nu-quark-d nu-q3">d</div>
             </div>
             <div class="nu-nucleon-card neutron-card">
-              <h4>Neutrone</h4><p>1 quark up e 2 quark down</p>
+              <p>1 quark up e 2 quark down</p>
               <div class="nu-quark-chip nu-quark-u nu-q1">u</div><div class="nu-quark-chip nu-quark-d nu-q2">d</div><div class="nu-quark-chip nu-quark-d nu-q3">d</div>
             </div>
             <div class="nu-tag" style="left:18%;top:12%">protone</div>
@@ -144,6 +144,7 @@ function nuInitDrag(root) {
   const fixedA = {x: 318, y: 168}, fixedB = {x: 342, y: 294}, anchor = {x: 494, y: 222};
   let current = {x: anchor.x, y: anchor.y}, target = {x: anchor.x, y: anchor.y};
   let dragging = false, interacted = false, raf = 0;
+  let activePointerId = null;
   const maxRadius = 170;
   function updateLinks() {
     const hub = {x: (fixedA.x + fixedB.x + current.x) / 3, y: (fixedA.y + fixedB.y + current.y) / 3};
@@ -170,15 +171,66 @@ function nuInitDrag(root) {
     if (d > maxRadius) {const scale = maxRadius / d; dx *= scale; dy *= scale;}
     target.x = anchor.x + dx; target.y = anchor.y + dy;
   }
-  function coords(e) {const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; return p.matrixTransform(svg.getScreenCTM().inverse());}
-  function onPointerDown(e) {dragging = true; interacted = true; hand.classList.add('hidden'); handText.classList.add('hidden'); dragNode.setPointerCapture?.(e.pointerId); dragNode.style.cursor = 'grabbing'; const p = coords(e); clampTarget(p.x, p.y); e.preventDefault();}
-  function onPointerMove(e) {if (!dragging) return; const p = coords(e); clampTarget(p.x, p.y);}
-  function stopDragging(e) {dragging = false; target.x = anchor.x; target.y = anchor.y; dragNode.style.cursor = 'grab'; try {dragNode.releasePointerCapture?.(e.pointerId);} catch (err) {} }
+  function coords(e) {
+    const matrix = svg.getScreenCTM();
+    if (!matrix) return null;
+    const point = svg.createSVGPoint();
+    point.x = e.clientX;
+    point.y = e.clientY;
+    return point.matrixTransform(matrix.inverse());
+  }
+
+  function onPointerDown(e) {
+    if (activePointerId !== null || (e.pointerType === 'mouse' && e.button !== 0)) return;
+    const point = coords(e);
+    if (!point) return;
+
+    activePointerId = e.pointerId;
+    dragging = true;
+    interacted = true;
+    hand.classList.add('hidden');
+    handText.classList.add('hidden');
+    dragNode.style.cursor = 'grabbing';
+    clampTarget(point.x, point.y);
+
+    // La cattura rimane sull'SVG, anche se il dito esce dal quark.
+    svg.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  }
+
+  function onPointerMove(e) {
+    if (!dragging || e.pointerId !== activePointerId) return;
+    const point = coords(e);
+    if (!point) return;
+    clampTarget(point.x, point.y);
+    if (e.cancelable) e.preventDefault();
+  }
+
+  function stopDragging(e) {
+    if (e.pointerId !== activePointerId) return;
+    activePointerId = null;
+    dragging = false;
+    target.x = anchor.x;
+    target.y = anchor.y;
+    dragNode.style.cursor = 'grab';
+    if (svg.hasPointerCapture(e.pointerId)) svg.releasePointerCapture(e.pointerId);
+  }
+
+  function onLostPointerCapture(e) {
+    if (e.pointerId !== activePointerId) return;
+    activePointerId = null;
+    dragging = false;
+    target.x = anchor.x;
+    target.y = anchor.y;
+    dragNode.style.cursor = 'grab';
+  }
+
   dragNode.addEventListener('pointerdown', onPointerDown);
-  dragNode.addEventListener('pointermove', onPointerMove);
-  dragNode.addEventListener('pointerup', stopDragging);
-  dragNode.addEventListener('pointercancel', stopDragging);
-  dragNode.addEventListener('pointerleave', e => {if (!dragging) return;});
+  svg.addEventListener('pointermove', onPointerMove);
+  svg.addEventListener('pointerup', stopDragging);
+  svg.addEventListener('pointercancel', stopDragging);
+  svg.addEventListener('lostpointercapture', onLostPointerCapture);
+
   function tick() {
     current.x += (target.x - current.x) * (dragging ? 0.28 : 0.13);
     current.y += (target.y - current.y) * (dragging ? 0.28 : 0.13);
@@ -187,5 +239,12 @@ function nuInitDrag(root) {
   }
   updateLinks();
   raf = requestAnimationFrame(tick);
-  addCleanup(() => {cancelAnimationFrame(raf); dragNode.removeEventListener('pointerdown', onPointerDown); dragNode.removeEventListener('pointermove', onPointerMove); dragNode.removeEventListener('pointerup', stopDragging); dragNode.removeEventListener('pointercancel', stopDragging);});
+  addCleanup(() => {
+    cancelAnimationFrame(raf);
+    dragNode.removeEventListener('pointerdown', onPointerDown);
+    svg.removeEventListener('pointermove', onPointerMove);
+    svg.removeEventListener('pointerup', stopDragging);
+    svg.removeEventListener('pointercancel', stopDragging);
+    svg.removeEventListener('lostpointercapture', onLostPointerCapture);
+  });
 }
