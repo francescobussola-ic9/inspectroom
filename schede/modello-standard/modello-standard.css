@@ -31,3 +31,88 @@
 .sm-family .sm-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;min-height:88px;padding:10px 5px}
 .sm-family .sm-item .sm-tile-symbol{font-size:1.76rem;line-height:1.15;font-weight:750;letter-spacing:-.015em;white-space:nowrap}
 .sm-family .sm-item .sm-tile-name{display:block;font-size:.83rem;line-height:1.25;font-weight:500;color:#eef5fb;margin:0;text-align:center}
+
+
+/*
+ * Aspetto ispirato al poster del Modello Standard presente nell'aula.
+ * Intervento esclusivamente grafico: numero, ordine, simboli e contenuto
+ * delle tiles sono definiti dal JavaScript originale e non vengono modificati.
+ */
+.sm-page {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.sm-families {
+  padding: 18px;
+  gap: 14px;
+  border: 1px solid #aab4b9;
+  border-radius: 9px;
+  background: #e8e9e2;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .22);
+}
+
+.sm-families .sm-family {
+  background: #f7f7f1;
+  border: 1px solid color-mix(in srgb, var(--family), #777 22%);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(18, 25, 32, .08);
+}
+
+.sm-families .sm-quarks {
+  --family: #aa87c8;
+  --family-bg: #d6c0e5;
+}
+.sm-families .sm-leptons {
+  --family: #7fb28d;
+  --family-bg: #bcdfc3;
+}
+.sm-families .sm-bosons {
+  --family: #cb8683;
+  --family-bg: #ecc3bf;
+}
+.sm-families .sm-higgs {
+  --family: #c5a64d;
+  --family-bg: #efdb91;
+}
+
+.sm-families .sm-family h3 {
+  color: #242c34;
+  background: var(--family-bg);
+  border-bottom: 1px solid color-mix(in srgb, var(--family), #777 25%);
+  letter-spacing: .01em;
+}
+
+.sm-families .sm-family .sm-item {
+  color: #222934;
+  background: color-mix(in srgb, var(--family-bg), #fff 30%);
+  border: 1px solid color-mix(in srgb, var(--family), #777 22%);
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .06);
+}
+
+.sm-families .sm-family .sm-item:hover {
+  background: var(--family-bg);
+  border-color: #4e6271;
+  filter: none;
+}
+
+.sm-families .sm-family .sm-item:focus-visible {
+  outline: 3px solid #265c8a;
+  outline-offset: 2px;
+}
+
+.sm-families .sm-family .sm-item .sm-tile-symbol {
+  color: #202733;
+}
+
+.sm-families .sm-family .sm-item .sm-tile-name {
+  color: #343b43;
+}
+
+@media (max-width: 700px) {
+  .sm-families {
+    padding: 10px;
+    gap: 10px;
+  }
+}
