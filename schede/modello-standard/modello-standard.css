@@ -8,7 +8,7 @@
 .sm-bosons{--family:#e3a1a2;--family-bg:#8b4850}
 .sm-higgs{--family:#e9cb6b;--family-bg:#866d2f}
 .sm-family-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;padding:12px}
-.sm-family .sm-item{background:color-mix(in srgb,var(--family-bg),#273a4a 38%);border-color:var(--family);min-width:0}
+.sm-family .sm-item{background:color-mix(in srgb,var(--family-bg),#273a4a 24%);border-color:var(--family);min-width:0}
 .sm-family .sm-item:hover{border-color:#eaf0f5;filter:brightness(1.12)}
 .sm-family .sm-item strong{overflow-wrap:anywhere}
 @media(max-width:700px){.sm-families{grid-template-columns:1fr}.sm-page{padding:12px}}
@@ -46,7 +46,7 @@
   background-image:
     linear-gradient(118deg, rgba(255,255,255,.44) 0%, transparent 34%, rgba(100,100,90,.045) 100%),
     url('../../assets/standard-paper-texture.webp');
-  background-size: cover, 512px 512px;
+  background-size: cover, 360px 360px;
   box-shadow:
     0 2px 3px rgba(0,0,0,.16),
     3px 7px 12px rgba(0,0,0,.17),
@@ -148,8 +148,8 @@
   display: block;
   padding: 16px 12px 20px;
   margin-bottom: 7px;
-  background: rgba(255,255,255,.64);
-  border-bottom: 1px solid rgba(64,70,75,.16);
+  background: transparent;
+  border-bottom: 0;
   color: #283443;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: clamp(1.35rem, 3vw, 2.15rem);
@@ -169,44 +169,59 @@
   #smExperience.sm-page { scroll-behavior: auto; }
 }
 
-/* INSPECTROOM · Famiglie disegnate direttamente sulla carta.
-   Cambiano unicamente i contenitori e le relative intestazioni.
-   Nessuna regola modifica le tiles .sm-item. */
+/* INSPECTROOM · Cornici di famiglia stampate sulla carta.
+   Le tiles .sm-item, i loro colori, le dimensioni e l'ordine non vengono toccati. */
 #smExperience .sm-family {
   position: relative;
   overflow: visible;
   background: transparent;
-  border: 1px solid color-mix(in srgb, var(--family) 73%, #766f64 27%);
-  border-radius: 11px;
+  border: 1.5px solid var(--family);
+  border-radius: 12px;
   box-shadow: none;
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
 }
 
-/* Etichetta sul bordo della sezione: come stampata sul manifesto. */
+/* Titoli inseriti nella linea superiore, senza barre d'intestazione.
+   Un fondino minimo ritaglia solo il tratto di bordo dietro il testo. */
 #smExperience .sm-family h3 {
   position: relative;
-  width: fit-content;
-  max-width: calc(100% - 26px);
-  margin: -14px 0 0 12px;
-  padding: 0 9px;
+  display: table;
+  width: auto;
+  max-width: calc(100% - 30px);
+  margin: -17px 0 0 16px;
+  padding: 0 11px;
   background: #f4f2eb;
   border: 0;
-  box-shadow: none;
   border-radius: 0;
-  color: color-mix(in srgb, var(--family-bg) 78%, #1c2936 22%);
-  font-size: 1.12rem;
+  box-shadow: none;
+  color: color-mix(in srgb, var(--family-bg) 82%, #182533 18%);
+  font-size: 1.22rem;
   font-weight: 750;
   line-height: 1.4;
 }
 
-/* Le sezioni conservano la griglia e l'ordine dei loro elementi. */
-#smExperience .sm-family-tiles {
-  padding-top: 12px;
+/* Piccolissima ombra sulle tiles, senza ritoccare il loro riempimento. */
+#smExperience .sm-family .sm-item {
+  box-shadow: 0 2px 5px rgba(35, 31, 27, .16);
 }
 
-/* In verticale non ritagliare i titoli delle famiglie. */
-@media (max-width:700px) {
-  #smExperience .sm-family h3 { font-size: 1.04rem; }
-  #smExperience .sm-families { row-gap: 23px; }
+#smExperience .sm-family-tiles { padding-top: 13px; }
+
+@media (max-width: 700px) {
+  #smExperience .sm-family h3 { font-size: 1.09rem; margin-top: -15px; }
+  #smExperience .sm-families { row-gap: 24px; }
+}
+
+/* Correzione: nessuna fascia/rettangolo sotto il titolo del poster. */
+#overlay #smExperience.sm-page .sm-families::before {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
