@@ -169,18 +169,61 @@
   #smExperience.sm-page { scroll-behavior: auto; }
 }
 
-/* Variante carta naturale: la texture del poster resta visibile sotto le famiglie.
-   Nessuna variazione a tile, palette, ordine, contenuti o interazioni. */
+
+/* INSPECTROOM · Famiglie in vetro scuro (ispirazione Aero/Liquid Glass).
+   Conserva colori, dimensioni, ordine e comportamento delle nove tiles.
+   La superficie del poster e il titolo restano invariati. */
 #smExperience .sm-family {
-  background: rgba(248, 245, 236, .42);
-  border: 1px solid rgba(105, 99, 88, .30);
-  border-radius: 4px;
-  box-shadow: 0 1px 2px rgba(72, 65, 52, .07),
-              inset 0 1px 0 rgba(255, 255, 255, .28);
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(150deg,
+    rgba(38, 55, 72, .77) 0%,
+    rgba(13, 29, 46, .72) 54%,
+    rgba(10, 24, 40, .81) 100%);
+  border: 1px solid rgba(232, 242, 250, .34);
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  backdrop-filter: blur(14px) saturate(125%);
+  box-shadow:
+    0 8px 23px rgba(14, 24, 36, .22),
+    0 1px 3px rgba(8, 18, 28, .17),
+    inset 0 1px 0 rgba(255, 255, 255, .30),
+    inset 1px 0 0 rgba(255, 255, 255, .10),
+    inset 0 -1px 0 rgba(0, 0, 0, .22);
 }
+
+/* Riflesso delicato, sempre dietro a testi e tiles. */
+#smExperience .sm-family::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 45%;
+  border-radius: inherit;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,.16),
+    rgba(255,255,255,.055) 36%,
+    rgba(255,255,255,0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+#smExperience .sm-family > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Intestazioni scure e traslucide, senza cambiare il colore delle tiles. */
 #smExperience .sm-family h3 {
-  background: rgba(250, 248, 241, .36);
-  color: #353b43;
-  border-bottom: 1px solid rgba(105, 99, 88, .22);
-  text-shadow: none;
+  background: linear-gradient(100deg,
+    color-mix(in srgb, var(--family-bg) 68%, transparent),
+    rgba(22, 37, 51, .49));
+  border-bottom: 1px solid rgba(240, 246, 250, .20);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+  color: #f2f6f9;
+}
+
+/* Solo se manca il supporto alla sfocatura: vetro più opaco per leggibilità. */
+@supports not (backdrop-filter: blur(1px)) {
+  #smExperience .sm-family {
+    background: linear-gradient(155deg, #2b4053, #132637);
+  }
 }
