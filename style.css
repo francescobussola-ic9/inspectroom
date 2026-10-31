@@ -616,3 +616,12 @@ body.help-intro-active #helpBtn {
 .shared-particle-info { text-align: left; line-height: 1.5; font-size: .94rem; overflow-y: auto; max-height: min(56vh, 440px); padding-right: 5px; }
 .shared-particle-info p { margin: 0 0 .72em; }
 .shared-particle-info .shared-subtitle { font-weight: 600; color: #9edfff; }
+
+
+/* Schermata di avvio: il portale rimane appena visibile attraverso il velo. */
+.intro-screen {position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(2,8,18,.93);opacity:1;visibility:visible;transition:opacity .85s ease,visibility .85s ease;pointer-events:all;}
+.intro-screen.intro-out {opacity:0;visibility:hidden;pointer-events:none;}
+.intro-art {width:min(94vw,820px);height:min(94vw,820px,90vh);display:grid;place-items:center;}
+.intro-art svg {width:100%;height:100%;display:block;overflow:visible;}
+@media (max-height:600px) {.intro-art {height:92vh;width:min(94vw,92vh);}}
+@media (prefers-reduced-motion:reduce) {.intro-screen {transition:none;}}
