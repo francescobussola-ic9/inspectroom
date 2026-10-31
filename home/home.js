@@ -17,13 +17,14 @@ document.getElementById('closeBtn').onclick = closeScene; overlay.addEventListen
 
 // Un invito discreto, senza apertura automatica della guida.
 (function initHelpHint() {
-  const button = document.getElementById('helpBtn');
+  window.addEventListener('inspectroom:intro-finished', () => {
   const shade = document.createElement('div'); shade.className = 'help-intro-shade'; shade.setAttribute('aria-hidden', 'true');
   document.body.appendChild(shade);
   document.body.classList.add('help-intro-active');
   let timeout;
   function dismiss() {document.body.classList.remove('help-intro-active'); clearTimeout(timeout); document.removeEventListener('pointerdown', dismiss, true); document.removeEventListener('keydown', dismiss, true);}
-  timeout = setTimeout(dismiss, 2500);
+  timeout = setTimeout(dismiss, 4500);
   document.addEventListener('pointerdown', dismiss, true);
   document.addEventListener('keydown', dismiss, true);
+  }, {once:true});
 })();
